@@ -1,0 +1,534 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOP Builder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom style for peer-checked radio cards */
+        .peer:checked ~ .peer-checked\:border-blue-600 {
+            border-color: #2563eb; /* blue-600 */
+        }
+        .peer:checked ~ .peer-checked\:ring-2 {
+            --tw-ring-color: #2563eb; /* blue-600 */
+            --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+            --tw-shadow: 0 0 #0000;
+            box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen py-12 px-4">
+
+    <div class="w-full max-w-6xl bg-white rounded-2xl shadow-xl p-8 md:p-12">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-2">SOP Builder</h1>
+        <p class="text-center text-gray-500 mb-10">Follow the steps to generate your Statement of Purpose.</p>
+
+        <div id="stepper" class="flex items-center w-full mb-12">
+            <div class="stepper-item flex-1 text-center" data-step="1">
+                <div class="stepper-circle w-10 h-10 bg-blue-600 border-2 border-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto">1</div>
+                <p class="stepper-label mt-2 text-sm font-medium text-blue-600">Details</p>
+            </div>
+            
+            <div class="stepper-line flex-1 h-px bg-gray-300"></div>
+
+            <div class="stepper-item flex-1 text-center" data-step="2">
+                <div class="stepper-circle w-10 h-10 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center text-gray-500 font-bold text-lg mx-auto">2</div>
+                <p class="stepper-label mt-2 text-sm font-medium text-gray-500">Content</p>
+            </div>
+
+            <div class="stepper-line flex-1 h-px bg-gray-300"></div>
+
+            <div class="stepper-item flex-1 text-center" data-step="3">
+                <div class="stepper-circle w-10 h-10 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center text-gray-500 font-bold text-lg mx-auto">3</div>
+                <p class="stepper-label mt-2 text-sm font-medium text-gray-500">Style</p>
+            </div>
+
+            <div class="stepper-line flex-1 h-px bg-gray-300"></div>
+
+            <div class="stepper-item flex-1 text-center" data-step="4">
+                <div class="stepper-circle w-10 h-10 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center text-gray-500 font-bold text-lg mx-auto">4</div>
+                <p class="stepper-label mt-2 text-sm font-medium text-gray-500">Design</p>
+            </div>
+        </div>
+
+        <form id="sop-form">
+            
+            <div class="step-content" data-step="1">
+                <h3 class="text-2xl font-semibold text-gray-700 mb-6">Step 1: Basic Information</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="relative">
+                        <label for="university-search" class="block mb-2 text-sm font-medium text-gray-700">University Name</label>
+                        <input type="text" id="university-search" class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g., Stanford University" autocomplete="off">
+                        <div id="university-dropdown" class="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg hidden max-h-60 overflow-y-auto"></div>
+                    </div>
+                    <div class="relative">
+                        <label for="program-search" class="block mb-2 text-sm font-medium text-gray-700">Program Name</label>
+                        <input type="text" id="program-search" class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g., M.S. in Computer Science" autocomplete="off">
+                        <div id="program-dropdown" class="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg hidden max-h-60 overflow-y-auto"></div>
+                    </div>
+                </div>
+                <div>
+                    <label class="block mb-2 text-sm font-medium text-gray-700">CV/Resume</label>
+                    <div class="flex items-center space-x-4 mb-4">
+                        <label class="flex items-center">
+                            <input type="radio" name="cv-option" value="upload" class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500" checked>
+                            <span class="ml-2 text-sm text-gray-700">Upload new CV/Resume</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="cv-option" value="existing" class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                            <span class="ml-2 text-sm text-gray-700">Use existing CV/Resume</span>
+                        </label>
+                    </div>
+                    <div id="cv-upload-area" class="flex items-center justify-center w-full">
+                        <label for="cv-upload" class="flex flex-col items-center justify-center w-full h-48 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+                            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                <svg class="w-10 h-10 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                                <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                                <p class="text-xs text-gray-500">PDF, DOC, or DOCX (MAX. 5MB)</p>
+                            </div>
+                            <input id="cv-upload" type="file" class="hidden"/>
+                        </label>
+                    </div>
+                    <div id="existing-cv-area" class="hidden">
+                        <p class="text-sm text-gray-600 mb-3">Please select one of your saved CVs:</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <label class="relative p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 has-[:checked]:bg-blue-50 has-[:checked]:border-blue-500">
+                                <input type="radio" name="existing-cv" value="cv1" class="absolute top-4 right-4 h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                                <div class="flex flex-col items-start">
+                                    <svg class="w-10 h-10 mb-3 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"/><path d="M9.4 15.5v-1h5.2v1zm0-2.5v-1h5.2v1zm0-2.5v-1h2.6v1z"/></svg>
+                                    <span class="font-medium text-gray-800 text-sm break-all">John_Doe_Resume_2024.pdf</span>
+                                    <span class="text-xs text-gray-500 mt-1">1.2 MB</span>
+                                </div>
+                            </label>
+                            <label class="relative p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 has-[:checked]:bg-blue-50 has-[:checked]:border-blue-500">
+                                <input type="radio" name="existing-cv" value="cv2" class="absolute top-4 right-4 h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                                <div class="flex flex-col items-start">
+                                    <svg class="w-10 h-10 mb-3 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"/><path d="M9.4 15.5v-1h5.2v1zm0-2.5v-1h5.2v1zm0-2.5v-1h2.6v1z"/></svg>
+                                    <span class="font-medium text-gray-800 text-sm break-all">JD_Portfolio_CS.pdf</span>
+                                    <span class="text-xs text-gray-500 mt-1">3.4 MB</span>
+                                </div>
+                            </label>
+                            <label class="relative p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 has-[:checked]:bg-blue-50 has-[:checked]:border-blue-500">
+                                <input type="radio" name="existing-cv" value="cv3" class="absolute top-4 right-4 h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                                <div class="flex flex-col items-start">
+                                    <svg class="w-10 h-10 mb-3 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"/><path d="M9.4 15.5v-1h5.2v1zm0-2.5v-1h5.2v1zm0-2.5v-1h2.6v1z"/></svg>
+                                    <span class="font-medium text-gray-800 text-sm break-all">Doe_John_CV_Official.pdf</span>
+                                    <span class="text-xs text-gray-500 mt-1">850 KB</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-content hidden" data-step="2">
+                <h3 class="text-2xl font-semibold text-gray-700 mb-6">Step 2: Core Content</h3>
+                <p class="text-gray-500 mb-6">Select the sections you want to include and provide some details for each.</p>
+                <div id="accordion-container" class="space-y-4">
+                    <!-- About You Section -->
+                    <div class="border border-gray-200 rounded-lg">
+                        <button type="button" class="accordion-header flex justify-between items-center w-full p-4 text-left hover:bg-gray-50 focus:outline-none">
+                            <span class="flex items-center">
+                                <input id="cb-about" type="checkbox" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" onclick="event.stopPropagation()">
+                                <label for="cb-about" class="ml-3 text-md font-medium text-gray-800 cursor-pointer" onclick="event.stopPropagation()">About You / Self Introduction</label>
+                            </span>
+                            <svg class="accordion-icon w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content hidden p-4 pt-0">
+                            <textarea id="text-about" class="w-full p-3 h-32 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Write a few sentences about your background, passions, and why you're a good fit..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Motivation Section -->
+                    <div class="border border-gray-200 rounded-lg">
+                        <button type="button" class="accordion-header flex justify-between items-center w-full p-4 text-left hover:bg-gray-50 focus:outline-none">
+                            <span class="flex items-center">
+                                <input id="cb-motivation" type="checkbox" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" onclick="event.stopPropagation()">
+                                <label for="cb-motivation" class="ml-3 text-md font-medium text-gray-800 cursor-pointer" onclick="event.stopPropagation()">Motivation for this Program</label>
+                            </span>
+                            <svg class="accordion-icon w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content hidden p-4 pt-0">
+                            <textarea id="text-motivation" class="w-full p-3 h-32 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Why are you interested in this specific program and university? What do you hope to achieve?"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Experience Section -->
+                    <div class="border border-gray-200 rounded-lg">
+                        <button type="button" class="accordion-header flex justify-between items-center w-full p-4 text-left hover:bg-gray-50 focus:outline-none">
+                            <span class="flex items-center">
+                                <input id="cb-exp" type="checkbox" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" onclick="event.stopPropagation()">
+                                <label for="cb-exp" class="ml-3 text-md font-medium text-gray-800 cursor-pointer" onclick="event.stopPropagation()">Research & Professional Experience</label>
+                            </span>
+                            <svg class="accordion-icon w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content hidden p-4 pt-0">
+                            <textarea id="text-exp" class="w-full p-3 h-32 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Summarize key projects, research, or job roles from your CV that are relevant to this program."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Additional Description Section -->
+                    <div class="mt-6">
+                        <label for="text-additional" class="text-md font-medium text-gray-800">Additional Description</label>
+                        <p class="text-sm text-gray-500 mb-2">Any other details you want to include? (e.g., future goals, specific professors you want to work with).</p>
+                        <textarea id="text-additional" class="w-full p-3 h-32 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="step-content hidden" data-step="3">
+                <h3 class="text-2xl font-semibold text-gray-700 mb-6">Step 3: Choose a Writing Style</h3>
+                <p class="text-gray-500 mb-6">Select the tone and style for your SOP. The AI will adapt based on your choice.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <label>
+                        <input type="radio" name="model" value="formal" class="peer hidden">
+                        <div class="p-6 border border-gray-300 rounded-lg cursor-pointer hover:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-2 h-full">
+                            <h4 class="text-lg font-semibold text-gray-800">Formal & Academic</h4>
+                            <p class="text-sm text-gray-600 mt-1">Professional, clear, and structured. Best for most graduate programs.</p>
+                            <div class="mt-4 border-t border-gray-200 pt-3">
+                                <p class="text-xs text-gray-500 italic">"My extensive research in quantum computing has prepared me for the rigorous demands of this doctoral program."</p>
+                            </div>
+                        </div>
+                    </label>
+                    <label>
+                        <input type="radio" name="model" value="confident" class="peer hidden" checked>
+                        <div class="p-6 border border-gray-300 rounded-lg cursor-pointer hover:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-2 h-full">
+                            <h4 class="text-lg font-semibold text-gray-800">Confident & Persuasive</h4>
+                            <p class="text-sm text-gray-600 mt-1">Direct and impactful. Highlights your achievements and potential.</p>
+                            <div class="mt-4 border-t border-gray-200 pt-3">
+                                <p class="text-xs text-gray-500 italic">"I am confident that my proven track record of innovation makes me an ideal candidate to drive success in your program."</p>
+                            </div>
+                        </div>
+                    </label>
+                    <label>
+                        <input type="radio" name="model" value="creative" class="peer hidden">
+                        <div class="p-6 border border-gray-300 rounded-lg cursor-pointer hover:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-2 h-full">
+                            <h4 class="text-lg font-semibold text-gray-800">Creative & Personal</h4>
+                            <p class="text-sm text-gray-600 mt-1">Uses storytelling. Best for humanities or design programs.</p>
+                            <div class="mt-4 border-t border-gray-200 pt-3">
+                                <p class="text-xs text-gray-500 italic">"From the moment I booted up my first computer, I was captivated by the endless possibilities of code."</p>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="step-content hidden" data-step="4">
+                <h3 class="text-2xl font-semibold text-gray-700 mb-6">Step 4: Select a Design (Required)</h3>
+                <p class="text-gray-500 mb-6">Choose a template for your final document.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <label>
+                        <input type="radio" name="design" value="minimal" class="peer hidden" checked>
+                        <div class="border border-gray-300 rounded-lg cursor-pointer overflow-hidden peer-checked:ring-2 peer-checked:ring-offset-2 peer-checked:ring-blue-600">
+                            <img src="./assets/images/minimalist-design.webp" alt="Classic Minimalist Design" class="w-full h-64 object-cover bg-gray-200">
+                            <p class="text-center p-3 text-sm font-medium text-gray-700">Classic Minimalist</p>
+                        </div>
+                    </label>
+                    <label>
+                        <input type="radio" name="design" value="serif" class="peer hidden">
+                        <div class="border border-gray-300 rounded-lg cursor-pointer overflow-hidden peer-checked:ring-2 peer-checked:ring-offset-2 peer-checked:ring-blue-600">
+                            <img src="./assets/images/serif-design.webp" alt="Modern Serif Design" class="w-full h-64 object-cover bg-gray-200">
+                            <p class="text-center p-3 text-sm font-medium text-gray-700">Modern Serif</p>
+                        </div>
+                    </label>
+                    <label>
+                        <input type="radio" name="design" value="bold" class="peer hidden">
+                        <div class="border border-gray-300 rounded-lg cursor-pointer overflow-hidden peer-checked:ring-2 peer-checked:ring-offset-2 peer-checked:ring-blue-600">
+                            <img src="./assets/images/bold-design.webp" alt="Bold Header Design" class="w-full h-64 object-cover bg-gray-200">
+                            <p class="text-center p-3 text-sm font-medium text-gray-700">Bold Header</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="flex justify-between mt-12">
+                <button type="button" id="prev-btn" class="py-2 px-6 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300 disabled:opacity-50" disabled>
+                    Previous
+                </button>
+                <button type="button" id="next-btn" class="py-2 px-6 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700">
+                    Next
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- AI Generating Overlay -->
+    <div id="loading-overlay" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex flex-col items-center justify-center z-50 hidden">
+        <svg class="animate-spin h-12 w-12 text-white mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        <h3 class="text-white text-xl font-semibold">Generating your SOP with AI...</h3>
+        <p class="text-gray-300 mt-2">Please wait a moment while we craft your document.</p>
+    </div>
+
+    <!-- SOP Preview Modal -->
+    <div id="preview-modal" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 hidden p-4">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-4xl h-full max-h-[90vh] flex flex-col">
+            <div class="flex justify-between items-center py-4 px-10 border-b">
+                <h3 class="text-xl font-semibold text-gray-800">Your Generated SOP</h3>
+                <button id="close-preview-btn" class="text-gray-500 text-2xl hover:text-gray-800">&times;</button>
+            </div>
+            <div id="sop-preview-content" class="p-8 md:p-10 overflow-y-auto flex-grow font-serif text-gray-800">
+                <!-- Personal Info Header -->
+                <div class="mb-10">
+                    <h2 class="text-3xl font-bold">Jane Doe</h2>
+                    <p class="text-sm text-gray-600 mt-1">123 Innovation Drive, Silicon Valley, CA 94305 | (555) 123-4567 | jane.doe@email.com</p>
+                </div>
+
+                <!-- Main Content -->
+                <h3 class="text-xl font-bold mb-8">Statement of Purpose: Master of Science in Computer Science at Stanford University</h3>
+
+                <p class="mb-6 leading-relaxed">
+                    From my first encounter with a command line interface, I have been captivated by the power of computation to solve complex human problems. My journey through my undergraduate studies in software engineering has only deepened this passion, transforming it into a dedicated pursuit of knowledge in artificial intelligence and machine learning. I am writing to express my fervent interest in the Master of Science in Computer Science program at Stanford University, a world-renowned institution that I am confident will provide the ideal environment for my academic and research aspirations.
+                </p>
+                <p class="mb-6 leading-relaxed">
+                    During my internship at TechCorp Inc., I had the opportunity to contribute to a project focused on natural language processing for sentiment analysis. This experience was transformative, as it allowed me to apply theoretical concepts to real-world data, and I was thrilled to see our model achieve a 92% accuracy rate. It is this intersection of theory and practical application that I wish to explore further at Stanford. I am particularly drawn to the work of Professor Andrew Ng in the field of deep learning and would be honored to learn from his expertise.
+                </p>
+                <p class="leading-relaxed">
+                    My goal is to leverage advanced computational techniques to build more equitable and accessible technologies. I believe that the rigorous curriculum, distinguished faculty, and collaborative research opportunities at Stanford will be instrumental in achieving this vision. I am eager to contribute my skills and enthusiasm to your vibrant academic community and am confident that my background has prepared me for the challenges and rewards of this prestigious program.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const totalSteps = 4;
+            let currentStep = 1;
+
+            const stepContents = document.querySelectorAll('.step-content');
+            const stepperItems = document.querySelectorAll('.stepper-item');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const loadingOverlay = document.getElementById('loading-overlay');
+            const previewModal = document.getElementById('preview-modal');
+            const closePreviewBtn = document.getElementById('close-preview-btn');
+
+            function updateUI() {
+                // Update Step Content
+                stepContents.forEach(step => {
+                    step.classList.add('hidden');
+                    if (parseInt(step.dataset.step) === currentStep) {
+                        step.classList.remove('hidden');
+                    }
+                });
+
+                // Update Stepper Visuals
+                stepperItems.forEach((item, index) => {
+                    const stepNum = parseInt(item.dataset.step);
+                    const circle = item.querySelector('.stepper-circle');
+                    const label = item.querySelector('.stepper-label');
+                    const line = item.previousElementSibling; // Get the line before this item
+
+                    if (stepNum < currentStep) {
+                        // Completed Step
+                        circle.classList.add('bg-blue-600', 'border-blue-600', 'text-white');
+                        circle.classList.remove('bg-white', 'border-gray-300', 'text-gray-500');
+                        label.classList.add('text-blue-600');
+                        label.classList.remove('text-gray-500');
+                        if (line && line.classList.contains('stepper-line')) {
+                            line.classList.add('bg-blue-600');
+                            line.classList.remove('bg-gray-300');
+                        }
+                    } else if (stepNum === currentStep) {
+                        // Active Step
+                        circle.classList.add('bg-blue-600', 'border-blue-600', 'text-white');
+                        circle.classList.remove('bg-white', 'border-gray-300', 'text-gray-500');
+                        label.classList.add('text-blue-600');
+                        label.classList.remove('text-gray-500');
+                        if (line && line.classList.contains('stepper-line')) {
+                            line.classList.add('bg-gray-300');
+                            line.classList.remove('bg-blue-600');
+                        }
+                    } else {
+                        // Future Step
+                        circle.classList.remove('bg-blue-600', 'border-blue-600', 'text-white');
+                        circle.classList.add('bg-white', 'border-gray-300', 'text-gray-500');
+                        label.classList.remove('text-blue-600');
+                        label.classList.add('text-gray-500');
+                        if (line && line.classList.contains('stepper-line')) {
+                            line.classList.add('bg-gray-300');
+                            line.classList.remove('bg-blue-600');
+                        }
+                    }
+                });
+                
+                // Update Button States
+                prevBtn.disabled = currentStep === 1;
+                
+                if (currentStep === totalSteps) {
+                    nextBtn.textContent = 'Generate SOP';
+                } else {
+                    nextBtn.textContent = 'Next';
+                }
+            }
+
+            nextBtn.addEventListener('click', () => {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    updateUI();
+                } else {
+                    // Show loading overlay and simulate AI generation
+                    loadingOverlay.classList.remove('hidden');
+                    
+                    setTimeout(() => {
+                        // In a real app, you'd fetch the generated SOP here
+                        // and populate the preview modal.
+                        
+                        loadingOverlay.classList.add('hidden');
+                        previewModal.classList.remove('hidden');
+                    }, 3000); // Simulate a 3-second generation time
+                }
+            });
+
+            prevBtn.addEventListener('click', () => {
+                if (currentStep > 1) {
+                    currentStep--;
+                    updateUI();
+                }
+            });
+
+            closePreviewBtn.addEventListener('click', () => {
+                previewModal.classList.add('hidden');
+            });
+
+            // Handle CV/Resume option toggle
+            const cvOptions = document.querySelectorAll('input[name="cv-option"]');
+            const cvUploadArea = document.getElementById('cv-upload-area');
+            const existingCvArea = document.getElementById('existing-cv-area');
+
+            cvOptions.forEach(option => {
+                option.addEventListener('change', (event) => {
+                    if (event.target.value === 'upload') {
+                        cvUploadArea.style.display = 'flex';
+                        existingCvArea.style.display = 'none';
+                    } else {
+                        cvUploadArea.style.display = 'none';
+                        existingCvArea.style.display = 'block';
+                    }
+                });
+            });
+
+            // Handle Accordion for Step 2
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const icon = header.querySelector('.accordion-icon');
+                    
+                    content.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+
+                    // Optional: Check the checkbox when opened
+                    const checkbox = header.querySelector('input[type="checkbox"]');
+                    if (checkbox && !content.classList.contains('hidden')) {
+                        checkbox.checked = true;
+                    }
+                });
+            });
+
+            // University Search Dropdown
+            const universitySearch = document.getElementById('university-search');
+            const universityDropdown = document.getElementById('university-dropdown');
+            const universities = [
+                "Stanford University", "Massachusetts Institute of Technology (MIT)", "Harvard University",
+                "California Institute of Technology (Caltech)", "University of Oxford", "University of Cambridge",
+                "Imperial College London", "ETH Zurich", "University of Chicago", "University College London (UCL)",
+                "National University of Singapore (NUS)", "Princeton University", "Nanyang Technological University (NTU)",
+                "Tsinghua University", "University of Pennsylvania", "Yale University", "Cornell University",
+                "Columbia University", "The University of Edinburgh", "The University of Tokyo"
+            ];
+
+            universitySearch.addEventListener('input', () => {
+                const filter = universitySearch.value.toUpperCase();
+                universityDropdown.innerHTML = '';
+                if (!filter) {
+                    universityDropdown.classList.add('hidden');
+                    return;
+                }
+
+                const filteredUniversities = universities.filter(uni => uni.toUpperCase().includes(filter));
+
+                if (filteredUniversities.length) {
+                    filteredUniversities.forEach(uni => {
+                        const item = document.createElement('div');
+                        item.textContent = uni;
+                        item.className = 'p-3 hover:bg-gray-100 cursor-pointer';
+                        item.addEventListener('click', () => {
+                            universitySearch.value = uni;
+                            universityDropdown.classList.add('hidden');
+                        });
+                        universityDropdown.appendChild(item);
+                    });
+                    universityDropdown.classList.remove('hidden');
+                } else {
+                    universityDropdown.classList.add('hidden');
+                }
+            });
+
+            // Hide dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!universitySearch.contains(e.target) && !universityDropdown.contains(e.target)) {
+                    universityDropdown.classList.add('hidden');
+                }
+            });
+            universitySearch.addEventListener('focus', () => {
+                if(universitySearch.value) universitySearch.dispatchEvent(new Event('input'));
+            });
+
+            // Program Search Dropdown
+            const programSearch = document.getElementById('program-search');
+            const programDropdown = document.getElementById('program-dropdown');
+            const programs = [
+                "M.S. in Computer Science", "M.S. in Electrical Engineering", "Ph.D. in Physics",
+                "Master of Business Administration (MBA)", "M.A. in English Literature", "M.S. in Data Science",
+                "M.S. in Mechanical Engineering", "LL.M. (Master of Laws)", "M.Arch (Master of Architecture)",
+                "M.S. in Biomedical Engineering", "M.S. in Civil Engineering", "Ph.D. in Chemistry"
+            ];
+
+            programSearch.addEventListener('input', () => {
+                const filter = programSearch.value.toUpperCase();
+                programDropdown.innerHTML = '';
+                if (!filter) {
+                    programDropdown.classList.add('hidden');
+                    return;
+                }
+
+                const filteredPrograms = programs.filter(prog => prog.toUpperCase().includes(filter));
+
+                if (filteredPrograms.length) {
+                    filteredPrograms.forEach(prog => {
+                        const item = document.createElement('div');
+                        item.textContent = prog;
+                        item.className = 'p-3 hover:bg-gray-100 cursor-pointer';
+                        item.addEventListener('click', () => {
+                            programSearch.value = prog;
+                            programDropdown.classList.add('hidden');
+                        });
+                        programDropdown.appendChild(item);
+                    });
+                    programDropdown.classList.remove('hidden');
+                } else {
+                    programDropdown.classList.add('hidden');
+                }
+            });
+
+            // Hide dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!programSearch.contains(e.target) && !programDropdown.contains(e.target)) {
+                    programDropdown.classList.add('hidden');
+                }
+            });
+            programSearch.addEventListener('focus', () => {
+                if(programSearch.value) programSearch.dispatchEvent(new Event('input'));
+            });
+
+            // Initialize the UI
+            updateUI();
+        });
+    </script>
+</body>
+</html>
