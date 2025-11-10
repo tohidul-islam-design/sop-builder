@@ -249,6 +249,33 @@
                                 </div>
                             </label>
                         </div>
+                         <!-- Professor Preference Section -->
+                        <div class="border border-gray-200 rounded-lg mt-4">
+                            <button type="button" class="accordion-header flex justify-between items-center w-full p-4 text-left hover:bg-gray-50 focus:outline-none">
+                                <span class="flex items-center">
+                                    <input id="cb-prof" type="checkbox" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" onclick="event.stopPropagation()">
+                                    <label for="cb-prof" class="ml-3 text-md font-medium text-gray-800 cursor-pointer" onclick="event.stopPropagation()">Mention a Professor of Interest</label>
+                                </span>
+                                <svg class="accordion-icon w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="accordion-content hidden p-4 pt-0">
+                                <p class="text-sm text-gray-500 mb-4">Mentioning a professor and your interest in their work can strengthen your application.</p>
+                                <div class="space-y-4">
+                                    <div>
+                                        <label for="prof-name" class="block mb-2 text-sm font-medium text-gray-700">Professor's Name</label>
+                                        <input type="text" id="prof-name" class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g., Prof. Andrew Ng">
+                                    </div>
+                                    <div>
+                                        <label for="prof-title" class="block mb-2 text-sm font-medium text-gray-700">Professor's Title / Research Area</label>
+                                        <input type="text" id="prof-title" class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g., Expert in Machine Learning">
+                                    </div>
+                                    <div>
+                                        <label for="prof-interest" class="block mb-2 text-sm font-medium text-gray-700">Why are you interested in their work?</label>
+                                        <textarea id="prof-interest" class="w-full p-3 h-24 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Briefly explain why you are interested in their work, mentioning specific papers or projects if possible."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
