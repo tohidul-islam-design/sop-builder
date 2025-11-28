@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOP Template</title>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+      // Configure Tailwind to use a classic serif font for the 'prose' class
+      tailwind.config = {
+        theme: {
+          extend: {
+            typography: ({ theme }) => ({
+              DEFAULT: {
+                css: {
+                  '--tw-prose-body': theme('colors.gray[700]'),
+                  '--tw-prose-headings': theme('colors.gray[900]'),
+                  '--tw-prose-links': theme('colors.blue[600]'),
+                  fontFamily: 'Georgia, ui-serif, Cambria, "Times New Roman", Times, serif',
+                  lineHeight: '1.75', // Equivalent to 1.5-2x spacing
+                  fontSize: '1.125rem', // Approx 12pt (18px)
+                  p: {
+                    marginTop: '1.25em',
+                    marginBottom: '1.25em',
+                  },
+                  h1: {
+                    fontSize: '1.5em', // Adjusts relative to the 18px base
+                    fontWeight: '600',
+                  },
+                  h2: {
+                    fontSize: '1.25em',
+                    fontWeight: '600',
+                  },
+                  // You can continue to customize h3, blockquotes, etc. here
+                },
+              },
+            }),
+          },
+        },
+      };
+    </script>
+</head>
+<body class="bg-gray-100 py-12 px-4">
+
+  <main class="max-w-3xl mx-auto bg-white p-16 shadow-lg rounded-lg">
+
+    <article class="prose">
+      
+      <h1 class="text-2xl font-semibold !mb-2">Your Full Name</h1>
+      <h2 class="text-lg text-gray-700 !mt-0 !mb-1">Applying for: [Name of the Program, e.g., M.S. in Computer Science]</h2>
+      <h2 class="text-lg text-gray-700 !mt-0 !mb-12">Target University: [Name of University]</h2>
+      
+      <p>
+        [Your Introduction: Start with a powerful anecdote or a clear statement about your passion. For example, "My fascination with large-scale data systems began not in a classroom, but while trying to optimize a volunteer database for a local food bank..."]
+      </p>
+      
+      <p>
+        [Your Academic Background: As a [Your Major] graduate from [Your University], I focused my studies on... My undergraduate thesis, "[Thesis Title]," allowed me to dive deep into [Topic], where I utilized [Specific Skill/Methodology] to... This project solidified my interest in [Program Field]..."]
+      </p>
+
+      <p>
+        [Your Professional/Research Experience: My experience as a [Your Role] at [Company/Lab] provided practical exposure to... For instance, I was tasked with [Project] and successfully [Your Achievement, e.g., "reduced query time by 20%"]... This experience taught me the importance of [Key Lesson] and directly prepared me for the challenges of [Specific Area]..."]
+      </p>
+      
+      <p>
+        [Why This Program/University: The [Program Name] at [University Name] is my first choice because of its unique focus on [Specific Area]. I am particularly drawn to the research conducted by Professor [Professor's Name] on [Their Research Topic]. I believe my background in [Your Skill] would allow me to contribute to the [Lab/Center Name]. Furthermore, the opportunity to take [Specific Course Name] would be invaluable..."]
+      </p>
+      
+      <p>
+        [Your Goals & Conclusion: Upon completing my master's degree, I intend to [Short-Term Goal, e.g., "work as a data scientist in the renewable energy sector"]... My long-term goal is to [Long-Term Goal, e.g., "lead a research team focused on..."]... The rigorous training and mentorship at [University Name] are essential for this path. I am confident that my academic background and practical experience have prepared me to succeed in your program, and I am eager to contribute to your vibrant academic community.]
+      </p>
+
+    </article>
+
+  </main>
+
+</body>
+</html>

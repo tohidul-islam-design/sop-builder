@@ -392,6 +392,13 @@
                         </div>
                     </label>
                     <label>
+                        <input type="radio" name="design" value="modern" class="peer hidden">
+                        <div class="border border-gray-300 rounded-lg cursor-pointer overflow-hidden peer-checked:ring-2 peer-checked:ring-offset-2 peer-checked:ring-blue-600">
+                            <img src="https://placehold.co/600x400/F3F4F6/9CA3AF?text=Modern+Design" alt="Modern Design" class="w-full h-64 object-cover bg-gray-200" onerror="this.src='https://placehold.co/600x400/F3F4F6/9CA3AF?text=Modern+Design'">
+                            <p class="text-center p-3 text-sm font-medium text-gray-700">Modern</p>
+                        </div>
+                    </label>
+                    <label>
                         <input type="radio" name="design" value="bold" class="peer hidden">
                         <div class="border border-gray-300 rounded-lg cursor-pointer overflow-hidden peer-checked:ring-2 peer-checked:ring-offset-2 peer-checked:ring-blue-600">
                             <img src="https://placehold.co/600x400/F3F4F6/9CA3AF?text=Bold+Header+Design" alt="Bold Header Design" class="w-full h-64 object-cover bg-gray-200" onerror="this.src='https://placehold.co/600x400/F3F4F6/9CA3AF?text=Bold+Header+Design'">
@@ -404,6 +411,56 @@
             <div class="step-content hidden" data-step="5">
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">Step 5: Preview Your SOP</h3>
                 <p class="text-gray-500 mb-6">Here is a preview of your generated Statement of Purpose. You can download the full, high-quality PDF.</p>
+
+                <!-- Live Edit Controls -->
+                <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
+                    <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+                        <p class="text-sm text-gray-600 font-medium">Live Controls</p>
+                        <div class="flex items-center space-x-4">
+                            <button type="button" class="edit-step-btn text-xs font-medium text-blue-600 hover:underline" data-step="1">Edit Details</button>
+                            <button type="button" class="edit-step-btn text-xs font-medium text-blue-600 hover:underline" data-step="2">Edit Content</button>
+                        </div>
+                    </div>
+
+                    <!-- Live Design Selector -->
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Design</label>
+                        <div id="live-design-controls" class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            <label>
+                                <input type="radio" name="live-design" value="minimal" class="peer hidden" checked>
+                                <div class="text-center p-2 border border-gray-300 rounded-lg cursor-pointer text-xs peer-checked:bg-blue-600 peer-checked:text-white peer-checked:border-blue-600">Minimalist</div>
+                            </label>
+                            <label>
+                                <input type="radio" name="live-design" value="serif" class="peer hidden">
+                                <div class="text-center p-2 border border-gray-300 rounded-lg cursor-pointer text-xs peer-checked:bg-blue-600 peer-checked:text-white peer-checked:border-blue-600">Serif</div>
+                            </label>
+                            <label>
+                                <input type="radio" name="live-design" value="modern" class="peer hidden">
+                                <div class="text-center p-2 border border-gray-300 rounded-lg cursor-pointer text-xs peer-checked:bg-blue-600 peer-checked:text-white peer-checked:border-blue-600">Modern</div>
+                            </label>
+                            <label>
+                                <input type="radio" name="live-design" value="bold" class="peer hidden">
+                                <div class="text-center p-2 border border-gray-300 rounded-lg cursor-pointer text-xs peer-checked:bg-blue-600 peer-checked:text-white peer-checked:border-blue-600">Bold</div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Live Style Selector -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Writing Style</label>
+                        <select id="live-style-controls" class="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+                            <option value="formal">Formal & Academic</option>
+                            <option value="confident" selected>Confident & Persuasive</option>
+                            <option value="creative">Creative & Personal</option>
+                        </select>
+                    </div>
+
+                    <!-- Save Edits Button -->
+                    <div class="mt-4 pt-4 border-t border-gray-200">
+                         <button type="button" id="save-edits-btn" class="w-full py-2 px-4 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 text-sm">Save & Apply Edits</button>
+                         <p class="text-xs text-gray-500 mt-2 text-center">Click this after editing the text below to keep your changes when switching designs.</p>
+                    </div>
+                </div>
 
                 <div id="sop-preview-container-wrapper" class="relative border border-gray-300 rounded-lg p-6 overflow-hidden">
                     <div id="preview-overlay" class="absolute inset-0 bg-white/50 backdrop-blur-sm z-10 flex items-center justify-center">
@@ -421,7 +478,7 @@
                         </div>
                     </div>
                     
-                    <div id="sop-preview-container" class="text-gray-400">
+                    <div id="sop-preview-container" class="text-gray-400 outline-none" contenteditable="true">
                         <h4 class="text-xl font-bold mb-4">Statement of Purpose: [Your Name]</h4>
                         <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi...</p>
                         <p class="mb-4">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
@@ -465,6 +522,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const totalSteps = 5;
             let currentStep = 1;
+            let userEditedContent = null; // To store user's live edits
 
             const stepContents = document.querySelectorAll('.step-content');
             const stepperItems = document.querySelectorAll('.stepper-item');
@@ -489,7 +547,8 @@
             const designImages = {
                 "minimal": "https://placehold.co/600x400/F3F4F6/9CA3AF?text=Minimalist+Design",
                 "serif": "https://placehold.co/600x400/F3F4F6/9CA3AF?text=Serif+Design",
-                "bold": "https://placehold.co/600x400/F3F4F6/9CA3AF?text=Bold+Header+Design"
+                "bold": "https://placehold.co/600x400/F3F4F6/9CA3AF?text=Bold+Header+Design",
+                "modern": "https://placehold.co/600x400/F3F4F6/9CA3AF?text=Modern+Design"
             };
 
             document.querySelectorAll('input[name="design"]').forEach(radio => {
@@ -566,57 +625,108 @@
             function generateSopContent() {
                 const previewReadyState = document.getElementById('preview-ready-state');
                 const previewLoadingState = document.getElementById('preview-loading-state');
-                const previewOverlay = document.getElementById('preview-overlay');
+                // Pass false to not show the loading overlay on live edits
+                const showLoading = arguments.length > 0 && arguments[0] === false ? false : true;
                 const sopPreviewContainer = document.getElementById('sop-preview-container');
                 const sopPreviewWrapper = document.getElementById('sop-preview-container-wrapper');
+                const selectedDesign = document.querySelector('input[name="live-design"]:checked').value;
+                const selectedStyle = document.getElementById('live-style-controls').value;
 
                 // Show loading state
-                previewOverlay.classList.remove('hidden');
-                previewReadyState.classList.add('hidden');
-                previewLoadingState.classList.remove('hidden');
-                sopPreviewWrapper.classList.remove('overflow-y-auto');
+                if (showLoading) {
+                    const previewOverlay = document.getElementById('preview-overlay');
+                    previewOverlay.classList.remove('hidden');
+                    previewReadyState.classList.add('hidden');
+                    previewLoadingState.classList.remove('hidden');
+                    sopPreviewWrapper.classList.remove('overflow-y-auto');
+                }
                 
                 // Simulate AI generation
+                const generationTime = showLoading ? 2500 : 100; // Faster update for live edits
                 setTimeout(() => {
                     // Hide the overlay
-                    previewOverlay.classList.add('hidden');
-
-                    // Update the preview container with generated content
-                    sopPreviewContainer.innerHTML = `
-                        <div class="font-serif text-gray-800 text-sm leading-relaxed space-y-4">
-                            <div class="mb-8">
-                                <h2 class="text-3xl font-bold">[Your Name]</h2>
-                                <p class="text-xs text-gray-600 mt-1">[Your Address] | [Your Phone] | [Your Email]</p>
-                            </div>
-                            <h3 class="text-lg font-bold !mb-6">Statement of Purpose: Ph.D. Program at the University of Washington</h3>
-                            <p>
-                                I am applying to your Ph.D. program to research programming languages and formal methods, driven by my involvement in the open-source community. In particular, I am interested in studying the structures that represent the semantics of Python libraries in data science, machine learning, artificial intelligence, and scientific computing. My experience working in this open-source community has prepared me to integrate theoretical research with practical applications. Researching the design and implementation of abstractions for domain-specific libraries can help preserve the independence and growth of decentralized multi-stakeholder Python libraries. I aim to explore how computer science and mathematics can offer a precise language to describe and manipulate the abstractions used in the field. Pursuing this research at the University of Washington would provide a collaborative environment to engage in academic research to meet the real-world needs of the open-source community.
-                            </p>
-                            <p>
-                                I have experience in the combination of research, community engagement, and addressing real-world user needs through my participation in open source, particularly with JupyterLab and Vega. Starting with a personal initiative to enhance the collaboration of my research group, I contributed to integrating the Vega-Lite visualization tools into JupyterLab, collaborating with project creators Dominik Moritz and Brian Granger. I relied on these relationships to build a general-purpose, open-source tool for Python data science users to optimize their interactive visualizations based on the needs of a database client. This improved Vega's debugging capabilities and contributed to published research on visualization profiling. As a core JupyterLab developer, I helped clients integrate with the Jupyter ecosystem and shared the responsibility of maintaining and enhancing the project. For example, I wrote and received a Chan Zuckerberg Initiative grant to improve the collaborative experience in Jupyter, leading to an integration of conflict-free replicated data types into JupyterLab. Overall, I enjoyed the opportunity to integrate research and user needs while navigating complex multi-stakeholder projects.
-                            </p>
-                            <p>
-                                My engagement in the open-source Python data science community motivates my research on the interrelated technical and social challenges it faces. The shift toward heterogeneous hardware has increased the complexity of developing numeric libraries and led to fragmentation in the ecosystem, centralizing control in single-stakeholder projects like Jax, PyTorch, and Mojo. The "exilic spaces," as defined by O’Hearn and Grubačić, of decentralized democratic open-source projects based on mutual aid and cooperative relationships, are a powerful living alternative to the market economy. By protecting them through tools that promote a bottom-up ecosystem to meet user needs and facilitate innovation, we can engage in the vital practice of navigating the difficulties of democratic governance. I hope my work can play a role in increasing the diversity and accessibility of the ecosystem by building tools that strengthen its independence.
-                            </p>
-                            <p>
-                                My path towards exploring how programming language abstractions can aid the PyData community began at Quansight. Working with Travis Oliphant, creator of NumPy, we sought to research a new foundation for the array ecosystem in Python. I reached out to Lenore Mullin, based on her 1980s work on the 'Mathematics of Arrays' formalizing APL with the lambda calculus, and we ended up working together to integrate her work into Python. This led to the development of a generic framework, metadsl, for representing and optimizing expressions in Python, but securing funding for this type of experimental technology proved challenging. While at Quansight, I also assisted the Data APIs consortium with analyzing the usage of array API patterns in Python, giving me the opportunity to witness the difficulties in providing users with universal interfaces. After leaving Quansight, I joined a startup Linea that was working to bring database and programming language theory to assist Python data scientists. As one of their first engineers, I engaged with academic researchers as the leader in developing Linea’s abstract analysis engine, which transformed Python code into a functional dataflow graph in order to support program slicing and lineage analysis. After leaving Linea, I re-focused on developing a system for abstract interpretation in Python. I learned about the work on e-graphs from the University of Washington, a technique that comes from equational reasoning. I wrote a Python library exposing the research software to a broader audience and presented it at the E-GRAPHS workshop at PLDI. I also developed an interactive visualizer, now integrated into the project, to make the work more accessible. To deepen my academic collaboration, I applied for and received an NSF fellowship to support pursuing a Ph.D. in computer science.
-                            </p>
-                             <p>
-                                My ongoing work with e-graphs in Python gives me a jumping-off point for my overall research goals in pursuing a Ph.D. In egglog, the framework building e-graphs on top of datalog, I am interested in studying the addition of parameterized types and higher-order functions to improve expressivity and the relationship to existing compute engines, such as SQL and differential dataflow. I also want to explore how existing functional abstractions like the Mathematics of Arrays and the RSVDG can be implemented within the e-graph framework to provide a general-purpose compiler framework for numeric computation, AI, and data science. More broadly, I am interested in studying, through the lens of human-computer interaction, how frameworks for type-driven programming can assist in cross-domain and language translation to assist inter-group collaboration between library developers, as well as how concepts from the foundations of mathematics can help give us the language to reason about the semantics of programming languages.
-                            </p>
-                            <p>
-                                More specifically, at the University of Washington, I am interested in working with Zachary Tatlock, Gilbert Bernstein, Dan Grossman, and Luis Ceze on studying the abstract interpretation and compilation of machine learning code in Python. Moreover, I want to connect the academic programming language community closer with the Python ecosystem, a high-impact field that would benefit from a foundational approach to studying abstraction. By enrolling in your graduate program, I could develop longer-term working relationships with other researchers in an environment supportive of experimentation and thus connect abstract research with the needs of existing open-source communities.
-                            </p>
-                        </div>
+                    if (showLoading) {
+                        document.getElementById('preview-overlay').classList.add('hidden');
+                    }
+                    
+                    let content = '';
+                    const sopText = userEditedContent || `
+                        <p>
+                            I am applying to your Ph.D. program to research programming languages and formal methods, driven by my involvement in the open-source community. In particular, I am interested in studying the structures that represent the semantics of Python libraries in data science, machine learning, artificial intelligence, and scientific computing. My experience working in this open-source community has prepared me to integrate theoretical research with practical applications. Researching the design and implementation of abstractions for domain-specific libraries can help preserve the independence and growth of decentralized multi-stakeholder Python libraries. I aim to explore how computer science and mathematics can offer a precise language to describe and manipulate the abstractions used in the field. Pursuing this research at the University of Washington would provide a collaborative environment to engage in academic research to meet the real-world needs of the open-source community.
+                        </p>
+                        <p>
+                            I have experience in the combination of research, community engagement, and addressing real-world user needs through my participation in open source, particularly with JupyterLab and Vega. Starting with a personal initiative to enhance the collaboration of my research group, I contributed to integrating the Vega-Lite visualization tools into JupyterLab, collaborating with project creators Dominik Moritz and Brian Granger. I relied on these relationships to build a general-purpose, open-source tool for Python data science users to optimize their interactive visualizations based on the needs of a database client. This improved Vega's debugging capabilities and contributed to published research on visualization profiling. As a core JupyterLab developer, I helped clients integrate with the Jupyter ecosystem and shared the responsibility of maintaining and enhancing the project. For example, I wrote and received a Chan Zuckerberg Initiative grant to improve the collaborative experience in Jupyter, leading to an integration of conflict-free replicated data types into JupyterLab. Overall, I enjoyed the opportunity to integrate research and user needs while navigating complex multi-stakeholder projects.
+                        </p>
+                        <p>
+                            My engagement in the open-source Python data science community motivates my research on the interrelated technical and social challenges it faces. The shift toward heterogeneous hardware has increased the complexity of developing numeric libraries and led to fragmentation in the ecosystem, centralizing control in single-stakeholder projects like Jax, PyTorch, and Mojo. The "exilic spaces," as defined by O’Hearn and Grubačić, of decentralized democratic open-source projects based on mutual aid and cooperative relationships, are a powerful living alternative to the market economy. By protecting them through tools that promote a bottom-up ecosystem to meet user needs and facilitate innovation, we can engage in the vital practice of navigating the difficulties of democratic governance. I hope my work can play a role in increasing the diversity and accessibility of the ecosystem by building tools that strengthen its independence.
+                        </p>
+                        <p>
+                            My path towards exploring how programming language abstractions can aid the PyData community began at Quansight. Working with Travis Oliphant, creator of NumPy, we sought to research a new foundation for the array ecosystem in Python. I reached out to Lenore Mullin, based on her 1980s work on the 'Mathematics of Arrays' formalizing APL with the lambda calculus, and we ended up working together to integrate her work into Python. This led to the development of a generic framework, metadsl, for representing and optimizing expressions in Python, but securing funding for this type of experimental technology proved challenging. While at Quansight, I also assisted the Data APIs consortium with analyzing the usage of array API patterns in Python, giving me the opportunity to witness the difficulties in providing users with universal interfaces. After leaving Quansight, I joined a startup Linea that was working to bring database and programming language theory to assist Python data scientists. As one of their first engineers, I engaged with academic researchers as the leader in developing Linea’s abstract analysis engine, which transformed Python code into a functional dataflow graph in order to support program slicing and lineage analysis. After leaving Linea, I re-focused on developing a system for abstract interpretation in Python. I learned about the work on e-graphs from the University of Washington, a technique that comes from equational reasoning. I wrote a Python library exposing the research software to a broader audience and presented it at the E-GRAPHS workshop at PLDI. I also developed an interactive visualizer, now integrated into the project, to make the work more accessible. To deepen my academic collaboration, I applied for and received an NSF fellowship to support pursuing a Ph.D. in computer science.
+                        </p>
+                         <p>
+                            My ongoing work with e-graphs in Python gives me a jumping-off point for my overall research goals in pursuing a Ph.D. In egglog, the framework building e-graphs on top of datalog, I am interested in studying the addition of parameterized types and higher-order functions to improve expressivity and the relationship to existing compute engines, such as SQL and differential dataflow. I also want to explore how existing functional abstractions like the Mathematics of Arrays and the RSVDG can be implemented within the e-graph framework to provide a general-purpose compiler framework for numeric computation, AI, and data science. More broadly, I am interested in studying, through the lens of human-computer interaction, how frameworks for type-driven programming can assist in cross-domain and language translation to assist inter-group collaboration between library developers, as well as how concepts from the foundations of mathematics can help us the language to reason about the semantics of programming languages.
+                        </p>
+                        <p>
+                            More specifically, at the University of Washington, I am interested in working with Zachary Tatlock, Gilbert Bernstein, Dan Grossman, and Luis Ceze on studying the abstract interpretation and compilation of machine learning code in Python. Moreover, I want to connect the academic programming language community closer with the Python ecosystem, a high-impact field that would benefit from a foundational approach to studying abstraction. By enrolling in your graduate program, I could develop longer-term working relationships with other researchers in an environment supportive of experimentation and thus connect abstract research with the needs of existing open-source communities.
+                        </p>
                     `;
+
+                    if (selectedDesign === 'modern') {
+                        content = `
+                            <div class="font-sans">
+                                <div class="flex justify-between items-start mb-10 border-b pb-6 border-gray-200">
+                                  <div>
+                                    <h1 class="text-3xl font-bold text-gray-800">[Your Name]</h1>
+                                    <h2 class="text-md text-blue-600 font-semibold mt-1">Ph.D. Program at the University of Washington</h2>
+                                  </div>
+                                  <div class="text-right text-xs text-gray-500 flex-shrink-0">
+                                    <p>[Your Address]</p>
+                                    <p>[Your Phone]</p>
+                                    <p>[Your Email]</p>
+                                  </div>
+                                </div>
+                                <div class="sop-body-content text-gray-700 text-sm leading-relaxed space-y-4">${sopText}</div>
+                            </div>
+                        `;
+                    } else { // Default to Classic Minimalist
+                        content = `
+                            <div class="font-serif text-gray-800 text-sm leading-relaxed space-y-4">
+                                <div class="mb-8">
+                                    <h2 class="text-3xl font-bold">[Your Name]</h2>
+                                    <p class="text-xs text-gray-600 mt-1">[Your Address] | [Your Phone] | [Your Email]</p>
+                                </div>
+                                <h3 class="text-lg font-bold !mb-6">Statement of Purpose: Ph.D. Program at the University of Washington</h3>
+                                <div class="sop-body-content">${sopText}</div>
+                            </div>
+                        `;
+                    }
+
+                    sopPreviewContainer.innerHTML = content;
+                    // Apply style changes
+                    sopPreviewContainer.classList.remove('font-serif', 'font-sans');
+                    if (selectedStyle === 'creative') {
+                        sopPreviewContainer.classList.add('font-sans');
+                    } else { // formal, confident
+                        sopPreviewContainer.classList.add('font-serif');
+                    }
+
                     sopPreviewContainer.classList.remove('text-gray-400');
                     sopPreviewWrapper.classList.add('overflow-y-auto');
-                }, 2500); // Simulate a 2.5-second generation time
+                }, generationTime); // Simulate a 2.5-second generation time
             }
 
             nextBtn.addEventListener('click', () => {
                 if (currentStep < totalSteps) {
                     currentStep++;
+                    userEditedContent = null; // Reset edits when moving between main steps
+                    if (currentStep === totalSteps) {
+                        // Sync step 4 selections to live controls in step 5
+                        const designSelection = document.querySelector('input[name="design"]:checked').value;
+                        document.querySelector(`input[name="live-design"][value="${designSelection}"]`).checked = true;
+
+                        const styleSelection = document.querySelector('input[name="model"]:checked').value;
+                        document.getElementById('live-style-controls').value = styleSelection;
+                    }
                     updateUI(); 
                     if (currentStep === totalSteps) {
                         generateSopContent();
@@ -629,6 +739,7 @@
             prevBtn.addEventListener('click', () => {
                 if (currentStep > 1) {
                     currentStep--;
+                    userEditedContent = null; // Reset edits when moving between main steps
                     updateUI();
                 }
             });
@@ -637,6 +748,35 @@
             document.getElementById('close-subscription-modal').addEventListener('click', () => {
                 document.getElementById('subscription-modal').classList.add('hidden');
             });
+
+            // Handle Edit buttons on Preview page
+            document.querySelectorAll('.edit-step-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const step = parseInt(btn.dataset.step);
+                    if (step > 0 && step < totalSteps) {
+                        currentStep = step;
+                        updateUI();
+                        // Hide the preview overlay if we jump back from the preview step
+                        document.getElementById('preview-overlay').classList.add('hidden');
+                    }
+                });
+            });
+
+            // Handle Live Edit controls on Preview page
+            document.querySelectorAll('#live-design-controls input').forEach(radio => {
+                radio.addEventListener('change', () => generateSopContent(false));
+            });
+            document.getElementById('live-style-controls').addEventListener('change', () => {
+                generateSopContent(false);
+            });
+            document.getElementById('save-edits-btn').addEventListener('click', () => {
+                const sopPreviewContainer = document.getElementById('sop-preview-container');
+                // Find the core text part of the preview to save
+                const contentWrapper = sopPreviewContainer.querySelector('.sop-body-content');
+                if (contentWrapper) userEditedContent = contentWrapper.innerHTML;
+                generateSopContent(false); // Re-apply the current design with the saved content
+            });
+
 
             // Handle CV/Resume option toggle
             const cvOptions = document.querySelectorAll('input[name="cv-option"]');
