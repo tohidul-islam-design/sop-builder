@@ -6,50 +6,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOP Builder</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* A small style to make the preview scrollable on its own */
+        #sop-preview-container-wrapper {
+            max-height: 70vh; /* Set a max height */
+        }
+    </style>
 </head>
-<body class="bg-white flex items-start justify-center min-h-screen py-4 px-4">
+<body class="bg-white flex items-center justify-center min-h-screen py-4 px-4">
 
-    <div class="w-full max-w-6xl p-4 md:p-8">
-        <h1 class="text-3xl font-bold text-center text-gray-800 mb-2">SOP Builder</h1>
-        <p class="text-center text-gray-500 mb-10">Follow the steps to generate your Statement of Purpose.</p>
-
-        <div id="stepper" class="flex items-center w-full mb-12">
-            <div class="stepper-item flex-1 text-center" data-step="1">
-                <div class="stepper-circle w-10 h-10 bg-blue-600 border-2 border-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto">1</div>
-                <p class="stepper-label mt-2 text-sm font-medium text-blue-600">Details</p>
-            </div>
+    <!-- Main Card Wrapper -->
+    <div class="w-full mx-auto rounded-2xl flex min-h-[90vh]">
+        <div class="flex flex-col md:flex-row w-full">
             
-            <div class="stepper-line flex-1 h-px bg-gray-300"></div>
+            <!-- Sidebar -->
+            <div class="w-full md:w-1/4 lg:w-1/5 p-4 md:p-8 border-b md:border-b-0 md:border-r border-gray-200 md:sticky top-0 h-screen overflow-y-auto">
+                <h2 class="text-xl font-bold text-gray-800 mb-6 hidden md:block">SOP Builder</h2>
+                
+                <!-- New Sidebar Stepper -->
+                <div id="stepper" class="flex flex-row md:flex-col md:space-y-2">
+                    
+                    <!-- Step 1 -->
+                    <div class="stepper-item flex-1 md:flex-none" data-step="1">
+                        <div class="stepper-anchor flex items-center space-x-3 p-3 rounded-lg">
+                            <div class="stepper-circle w-8 h-8 md:w-10 md:h-10 bg-blue-600 border-2 border-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0">1</div>
+                            <div class="hidden md:block">
+                                <p class="stepper-label text-sm font-medium text-blue-600">Details</p>
+                                <p class="text-xs text-gray-500">University & CV</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="stepper-item flex-1 md:flex-none" data-step="2">
+                         <div class="stepper-anchor flex items-center space-x-3 p-3 rounded-lg">
+                            <div class="stepper-circle w-8 h-8 md:w-10 md:h-10 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center text-gray-500 font-bold text-lg flex-shrink-0">2</div>
+                            <div class="hidden md:block">
+                                <p class="stepper-label text-sm font-medium text-gray-500">Content</p>
+                                 <p class="text-xs text-gray-500">Core sections</p>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="stepper-item flex-1 text-center" data-step="2">
-                <div class="stepper-circle w-10 h-10 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center text-gray-500 font-bold text-lg mx-auto">2</div>
-                <p class="stepper-label mt-2 text-sm font-medium text-gray-500">Content</p>
+                    <!-- Step 3 -->
+                    <div class="stepper-item flex-1 md:flex-none" data-step="3">
+                         <div class="stepper-anchor flex items-center space-x-3 p-3 rounded-lg">
+                            <div class="stepper-circle w-8 h-8 md:w-10 md:h-10 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center text-gray-500 font-bold text-lg flex-shrink-0">3</div>
+                            <div class="hidden md:block">
+                                <p class="stepper-label text-sm font-medium text-gray-500">Style</p>
+                                 <p class="text-xs text-gray-500">Writing tone</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="stepper-item flex-1 md:flex-none" data-step="4">
+                         <div class="stepper-anchor flex items-center space-x-3 p-3 rounded-lg">
+                            <div class="stepper-circle w-8 h-8 md:w-10 md:h-10 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center text-gray-500 font-bold text-lg flex-shrink-0">4</div>
+                            <div class="hidden md:block">
+                                <p class="stepper-label text-sm font-medium text-gray-500">Design</p>
+                                 <p class="text-xs text-gray-500">Select template</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="stepper-item flex-1 md:flex-none" data-step="5">
+                         <div class="stepper-anchor flex items-center space-x-3 p-3 rounded-lg">
+                            <div class="stepper-circle w-8 h-8 md:w-10 md:h-10 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center text-gray-500 font-bold text-lg flex-shrink-0">5</div>
+                            <div class="hidden md:block">
+                                <p class="stepper-label text-sm font-medium text-gray-500">Preview</p>
+                                 <p class="text-xs text-gray-500">Generate & Download</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
-            <div class="stepper-line flex-1 h-px bg-gray-300"></div>
+            <!-- Main Content -->
+            <div class="w-full md:w-3/4 lg:w-4/5 p-6 md:p-10">
+                <h1 class="text-3xl font-bold text-gray-800 mb-2">Create Your Statement of Purpose</h1>
+                <p class="text-gray-500 mb-10">Follow the steps to generate your document.</p>
 
-            <div class="stepper-item flex-1 text-center" data-step="3">
-                <div class="stepper-circle w-10 h-10 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center text-gray-500 font-bold text-lg mx-auto">3</div>
-                <p class="stepper-label mt-2 text-sm font-medium text-gray-500">Style</p>
-            </div>
-
-            <div class="stepper-line flex-1 h-px bg-gray-300"></div>
-
-            <div class="stepper-item flex-1 text-center" data-step="4">
-                <div class="stepper-circle w-10 h-10 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center text-gray-500 font-bold text-lg mx-auto">4</div>
-                <p class="stepper-label mt-2 text-sm font-medium text-gray-500">Design</p>
-            </div>
-
-            <div class="stepper-line flex-1 h-px bg-gray-300"></div>
-
-            <div class="stepper-item flex-1 text-center" data-step="5">
-                <div class="stepper-circle w-10 h-10 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center text-gray-500 font-bold text-lg mx-auto">5</div>
-                <p class="stepper-label mt-2 text-sm font-medium text-gray-500">Preview</p>
-            </div>
-        </div>
-
-        <form id="sop-form">
-            
+                <!-- Form (moved from original position) -->
+                <form id="sop-form">
+                    
             <div class="step-content" data-step="1">
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">Step 1: Basic Information</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
@@ -221,7 +263,7 @@
                             <label for="prof-ng">
                                 <input id="prof-ng" type="radio" name="professor" value="prof-ng" class="peer hidden">
                                 <div class="p-4 border border-gray-300 rounded-lg cursor-pointer hover:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-2 h-full flex flex-row items-center">
-                                    <img src="./assets/images/professor1.jpg" alt="Professor Andrew Ng" class="w-16 h-16 rounded-full object-cover">
+                                    <img src="https://placehold.co/64x64/E0E7FF/4F46E5?text=AN" alt="Professor Andrew Ng" class="w-16 h-16 rounded-full object-cover" onerror="this.src='https://placehold.co/64x64/E0E7FF/4F46E5?text=AN'">
                                     <div class="ml-4">
                                         <h4 class="font-semibold text-gray-800">Prof. Andrew Ng</h4>
                                         <p class="text-sm text-gray-600">Machine Learning</p>
@@ -231,7 +273,7 @@
                             <label for="prof-fei-fei">
                                 <input id="prof-fei-fei" type="radio" name="professor" value="prof-fei-fei" class="peer hidden">
                                 <div class="p-4 border border-gray-300 rounded-lg cursor-pointer hover:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-2 h-full flex flex-row items-center">
-                                    <img src="./assets/images/professor2.jpg" alt="Professor Fei-Fei Li" class="w-16 h-16 rounded-full object-cover">
+                                     <img src="https://placehold.co/64x64/E0E7FF/4F46E5?text=FL" alt="Professor Fei-Fei Li" class="w-16 h-16 rounded-full object-cover" onerror="this.src='https://placehold.co/64x64/E0E7FF/4F46E5?text=FL'">
                                     <div class="ml-4">
                                         <h4 class="font-semibold text-gray-800">Prof. Fei-Fei Li</h4>
                                         <p class="text-sm text-gray-600">Computer Vision</p>
@@ -241,13 +283,17 @@
                             <label for="prof-jurafsky">
                                 <input id="prof-jurafsky" type="radio" name="professor" value="prof-jurafsky" class="peer hidden">
                                 <div class="p-4 border border-gray-300 rounded-lg cursor-pointer hover:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-2 h-full flex flex-row items-center">
-                                    <img src="./assets/images/professor3.jpg" alt="Professor Dan Jurafsky" class="w-16 h-16 rounded-full object-cover">
+                                     <img src="https://placehold.co/64x64/E0E7FF/4F46E5?text=DJ" alt="Professor Dan Jurafsky" class="w-16 h-16 rounded-full object-cover" onerror="this.src='https://placehold.co/64x64/E0E7FF/4F46E5?text=DJ'">
                                     <div class="ml-4">
                                         <h4 class="font-semibold text-gray-800">Prof. Dan Jurafsky</h4>
                                         <p class="text-sm text-gray-600">Natural Language Processing</p>
                                     </div>
                                 </div>
                             </label>
+                        </div>
+                        <div id="interested-from" class="mt-4 hidden">
+                            <label for="prof-interest-text" class="block mb-2 text-sm font-medium text-gray-700">Why are you interested in their work?</label>
+                            <textarea id="prof-interest-text" class="w-full p-3 h-24 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Briefly explain why you are interested in their work, mentioning specific papers or projects if possible."></textarea>
                         </div>
                          <!-- Professor Preference Section -->
                         <div class="border border-gray-200 rounded-lg mt-4">
@@ -270,8 +316,8 @@
                                         <input type="text" id="prof-title" class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g., Expert in Machine Learning">
                                     </div>
                                     <div>
-                                        <label for="prof-interest" class="block mb-2 text-sm font-medium text-gray-700">Why are you interested in their work?</label>
-                                        <textarea id="prof-interest" class="w-full p-3 h-24 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Briefly explain why you are interested in their work, mentioning specific papers or projects if possible."></textarea>
+                                        <label for="prof-interest-accordion" class="block mb-2 text-sm font-medium text-gray-700">Why are you interested in their work?</label>
+                                        <textarea id="prof-interest-accordion" class="w-full p-3 h-24 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Briefly explain why you are interested in their work, mentioning specific papers or projects if possible."></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -283,7 +329,7 @@
             <div class="step-content hidden" data-step="3">
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">Step 3: Choose a Writing Style</h3>
                 <p class="text-gray-500 mb-6">Select the tone and style for your SOP. The AI will adapt based on your choice.</p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     <label>
                         <input type="radio" name="model" value="formal" class="peer hidden">
                         <div class="p-6 border border-gray-300 rounded-lg cursor-pointer hover:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-2 h-full">
@@ -314,6 +360,16 @@
                             </div>
                         </div>
                     </label>
+                    <label>
+                        <input type="radio" name="model" value="custom" class="peer hidden">
+                        <div class="p-6 border border-gray-300 rounded-lg cursor-pointer hover:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-2 h-full">
+                            <h4 class="text-lg font-semibold text-gray-800">Custom</h4>
+                            <p class="text-sm text-gray-600 mt-1">Define your own style. Provide keywords for the AI.</p>
+                            <div class="mt-4 border-t border-gray-200 pt-3">
+                                <p class="text-xs text-gray-500 italic">e.g., "Enthusiastic, slightly informal, and optimistic."</p>
+                            </div>
+                        </div>
+                    </label>
                 </div>
             </div>
 
@@ -324,21 +380,21 @@
                     <label>
                         <input type="radio" name="design" value="minimal" class="peer hidden" checked>
                         <div class="border border-gray-300 rounded-lg cursor-pointer overflow-hidden peer-checked:ring-2 peer-checked:ring-offset-2 peer-checked:ring-blue-600">
-                            <img src="./assets/images/minimalist-design.webp" alt="Classic Minimalist Design" class="w-full h-64 object-cover bg-gray-200">
+                            <img src="https://placehold.co/600x400/F3F4F6/9CA3AF?text=Minimalist+Design" alt="Classic Minimalist Design" class="w-full h-64 object-cover bg-gray-200" onerror="this.src='https://placehold.co/600x400/F3F4F6/9CA3AF?text=Minimalist+Design'">
                             <p class="text-center p-3 text-sm font-medium text-gray-700">Classic Minimalist</p>
                         </div>
                     </label>
                     <label>
                         <input type="radio" name="design" value="serif" class="peer hidden">
                         <div class="border border-gray-300 rounded-lg cursor-pointer overflow-hidden peer-checked:ring-2 peer-checked:ring-offset-2 peer-checked:ring-blue-600">
-                            <img src="./assets/images/serif-design.webp" alt="Modern Serif Design" class="w-full h-64 object-cover bg-gray-200">
+                            <img src="https://placehold.co/600x400/F3F4F6/9CA3AF?text=Serif+Design" alt="Modern Serif Design" class="w-full h-64 object-cover bg-gray-200" onerror="this.src='https://placehold.co/600x400/F3F4F6/9CA3AF?text=Serif+Design'">
                             <p class="text-center p-3 text-sm font-medium text-gray-700">Modern Serif</p>
                         </div>
                     </label>
                     <label>
                         <input type="radio" name="design" value="bold" class="peer hidden">
                         <div class="border border-gray-300 rounded-lg cursor-pointer overflow-hidden peer-checked:ring-2 peer-checked:ring-offset-2 peer-checked:ring-blue-600">
-                            <img src="./assets/images/bold-design.webp" alt="Bold Header Design" class="w-full h-64 object-cover bg-gray-200">
+                            <img src="https://placehold.co/600x400/F3F4F6/9CA3AF?text=Bold+Header+Design" alt="Bold Header Design" class="w-full h-64 object-cover bg-gray-200" onerror="this.src='https://placehold.co/600x400/F3F4F6/9CA3AF?text=Bold+Header+Design'">
                             <p class="text-center p-3 text-sm font-medium text-gray-700">Bold Header</p>
                         </div>
                     </label>
@@ -349,7 +405,7 @@
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">Step 5: Preview Your SOP</h3>
                 <p class="text-gray-500 mb-6">Here is a preview of your generated Statement of Purpose. You can download the full, high-quality PDF.</p>
 
-                <div class="relative border border-gray-300 rounded-lg p-6 h-100 min-h-screen overflow-hidden">
+                <div id="sop-preview-container-wrapper" class="relative border border-gray-300 rounded-lg p-6 overflow-hidden">
                     <div id="preview-overlay" class="absolute inset-0 bg-white/50 backdrop-blur-sm z-10 flex items-center justify-center">
                         <div id="preview-ready-state" class="text-center p-6 bg-white/80 rounded-lg shadow-lg">
                             <svg class="w-12 h-12 text-blue-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
@@ -382,7 +438,9 @@
                     Next
                 </button>
             </div>
-        </form>
+                </form>
+            </div>
+        </div>
     </div>
 
     <!-- Subscription Upsell Modal -->
@@ -412,6 +470,36 @@
             const stepperItems = document.querySelectorAll('.stepper-item');
             const prevBtn = document.getElementById('prev-btn');
             const nextBtn = document.getElementById('next-btn');
+            // Use placeholder images for professor avatars
+            const professorImages = {
+                "prof-ng": "https://placehold.co/64x64/E0E7FF/4F46E5?text=AN",
+                "prof-fei-fei": "https://placehold.co/64x64/E0E7FF/4F46E5?text=FL",
+                "prof-jurafsky": "https://placehold.co/64x64/E0E7FF/4F46E5?text=DJ"
+            };
+
+            document.querySelectorAll('input[name="professor"]').forEach(radio => {
+                const img = radio.parentElement.querySelector('img');
+                const profId = radio.id;
+                if (img && professorImages[profId]) {
+                    img.src = professorImages[profId];
+                }
+            });
+
+            // Use placeholder images for design templates
+            const designImages = {
+                "minimal": "https://placehold.co/600x400/F3F4F6/9CA3AF?text=Minimalist+Design",
+                "serif": "https://placehold.co/600x400/F3F4F6/9CA3AF?text=Serif+Design",
+                "bold": "https://placehold.co/600x400/F3F4F6/9CA3AF?text=Bold+Header+Design"
+            };
+
+            document.querySelectorAll('input[name="design"]').forEach(radio => {
+                const img = radio.parentElement.querySelector('img');
+                const designId = radio.value;
+                if (img && designImages[designId]) {
+                    img.src = designImages[designId];
+                }
+            });
+
 
             function updateUI() {
                 // Update Step Content
@@ -425,40 +513,32 @@
                 // Update Stepper Visuals
                 stepperItems.forEach((item, index) => {
                     const stepNum = parseInt(item.dataset.step);
+                    const anchor = item.querySelector('.stepper-anchor'); // Get the anchor tag
                     const circle = item.querySelector('.stepper-circle');
                     const label = item.querySelector('.stepper-label');
-                    const line = item.previousElementSibling; // Get the line before this item
+                    // Removed line logic
 
                     if (stepNum < currentStep) {
                         // Completed Step
                         circle.classList.add('bg-blue-600', 'border-blue-600', 'text-white');
                         circle.classList.remove('bg-white', 'border-gray-300', 'text-gray-500');
-                        label.classList.add('text-blue-600');
-                        label.classList.remove('text-gray-500');
-                        if (line && line.classList.contains('stepper-line')) {
-                            line.classList.add('bg-blue-600');
-                            line.classList.remove('bg-gray-300');
-                        }
+                        if (label) label.classList.add('text-blue-600');
+                        if (label) label.classList.remove('text-gray-500');
+                        if (anchor) anchor.classList.remove('bg-blue-50');
                     } else if (stepNum === currentStep) {
                         // Active Step
                         circle.classList.add('bg-blue-600', 'border-blue-600', 'text-white');
                         circle.classList.remove('bg-white', 'border-gray-300', 'text-gray-500');
-                        label.classList.add('text-blue-600');
-                        label.classList.remove('text-gray-500');
-                        if (line && line.classList.contains('stepper-line')) {
-                            line.classList.add('bg-gray-300');
-                            line.classList.remove('bg-blue-600');
-                        }
+                        if (label) label.classList.add('text-blue-600');
+                        if (label) label.classList.remove('text-gray-500');
+                        if (anchor) anchor.classList.add('bg-blue-50'); // Add active background
                     } else {
                         // Future Step
                         circle.classList.remove('bg-blue-600', 'border-blue-600', 'text-white');
                         circle.classList.add('bg-white', 'border-gray-300', 'text-gray-500');
-                        label.classList.remove('text-blue-600');
-                        label.classList.add('text-gray-500');
-                        if (line && line.classList.contains('stepper-line')) {
-                            line.classList.add('bg-gray-300');
-                            line.classList.remove('bg-blue-600');
-                        }
+                        if (label) label.classList.remove('text-blue-600');
+                        if (label) label.classList.add('text-gray-500');
+                        if (anchor) anchor.classList.remove('bg-blue-50');
                     }
                 });
                 
@@ -488,12 +568,13 @@
                 const previewLoadingState = document.getElementById('preview-loading-state');
                 const previewOverlay = document.getElementById('preview-overlay');
                 const sopPreviewContainer = document.getElementById('sop-preview-container');
+                const sopPreviewWrapper = document.getElementById('sop-preview-container-wrapper');
 
                 // Show loading state
                 previewOverlay.classList.remove('hidden');
                 previewReadyState.classList.add('hidden');
                 previewLoadingState.classList.remove('hidden');
-                sopPreviewContainer.parentElement.classList.remove('overflow-y-auto');
+                sopPreviewWrapper.classList.remove('overflow-y-auto');
                 
                 // Simulate AI generation
                 setTimeout(() => {
@@ -504,36 +585,38 @@
                     sopPreviewContainer.innerHTML = `
                         <div class="font-serif text-gray-800 text-sm leading-relaxed space-y-4">
                             <div class="mb-8">
-                                <h2 class="text-3xl font-bold">Jane Doe</h2>
-                                <p class="text-xs text-gray-600 mt-1">123 Innovation Drive, Silicon Valley, CA 94305 | (555) 123-4567 | jane.doe@email.com</p>
+                                <h2 class="text-3xl font-bold">[Your Name]</h2>
+                                <p class="text-xs text-gray-600 mt-1">[Your Address] | [Your Phone] | [Your Email]</p>
                             </div>
-                            <h3 class="text-lg font-bold !mb-6">Statement of Purpose: Master of Science in Computer Science at Stanford University</h3>
+                            <h3 class="text-lg font-bold !mb-6">Statement of Purpose: Ph.D. Program at the University of Washington</h3>
                             <p>
-                                From my first encounter with a command line interface, I have been captivated by the power of computation to solve complex human problems. My journey through my undergraduate studies in software engineering has only deepened this passion, transforming it into a dedicated pursuit of knowledge in artificial intelligence and machine learning. I am writing to express my fervent interest in the Master of Science in Computer Science program at Stanford University, a world-renowned institution that I am confident will provide the ideal environment for my academic and research aspirations.
+                                I am applying to your Ph.D. program to research programming languages and formal methods, driven by my involvement in the open-source community. In particular, I am interested in studying the structures that represent the semantics of Python libraries in data science, machine learning, artificial intelligence, and scientific computing. My experience working in this open-source community has prepared me to integrate theoretical research with practical applications. Researching the design and implementation of abstractions for domain-specific libraries can help preserve the independence and growth of decentralized multi-stakeholder Python libraries. I aim to explore how computer science and mathematics can offer a precise language to describe and manipulate the abstractions used in the field. Pursuing this research at the University of Washington would provide a collaborative environment to engage in academic research to meet the real-world needs of the open-source community.
                             </p>
                             <p>
-                                During my internship at TechCorp Inc., I had the opportunity to contribute to a project focused on natural language processing for sentiment analysis. This experience was transformative, as it allowed me to apply theoretical concepts to real-world data, and I was thrilled to see our model achieve a 92% accuracy rate. It is this intersection of theory and practical application that I wish to explore further at Stanford. I am particularly drawn to the work of Professor Andrew Ng in the field of deep learning and would be honored to learn from his expertise. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                I have experience in the combination of research, community engagement, and addressing real-world user needs through my participation in open source, particularly with JupyterLab and Vega. Starting with a personal initiative to enhance the collaboration of my research group, I contributed to integrating the Vega-Lite visualization tools into JupyterLab, collaborating with project creators Dominik Moritz and Brian Granger. I relied on these relationships to build a general-purpose, open-source tool for Python data science users to optimize their interactive visualizations based on the needs of a database client. This improved Vega's debugging capabilities and contributed to published research on visualization profiling. As a core JupyterLab developer, I helped clients integrate with the Jupyter ecosystem and shared the responsibility of maintaining and enhancing the project. For example, I wrote and received a Chan Zuckerberg Initiative grant to improve the collaborative experience in Jupyter, leading to an integration of conflict-free replicated data types into JupyterLab. Overall, I enjoyed the opportunity to integrate research and user needs while navigating complex multi-stakeholder projects.
                             </p>
                             <p>
-                                My academic background has provided me with a robust foundation in computer science fundamentals. Courses such as 'Data Structures and Algorithms', 'Machine Learning', and 'Distributed Systems' have equipped me with the necessary skills to tackle complex computational problems. For my senior capstone project, I led a team of four to develop a decentralized application (dApp) for secure academic credentialing, which was awarded 'Best Project' in my cohort. This project honed not only my technical skills in blockchain and cryptography but also my ability to manage a project from conception to deployment. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                My engagement in the open-source Python data science community motivates my research on the interrelated technical and social challenges it faces. The shift toward heterogeneous hardware has increased the complexity of developing numeric libraries and led to fragmentation in the ecosystem, centralizing control in single-stakeholder projects like Jax, PyTorch, and Mojo. The "exilic spaces," as defined by O’Hearn and Grubačić, of decentralized democratic open-source projects based on mutual aid and cooperative relationships, are a powerful living alternative to the market economy. By protecting them through tools that promote a bottom-up ecosystem to meet user needs and facilitate innovation, we can engage in the vital practice of navigating the difficulties of democratic governance. I hope my work can play a role in increasing the diversity and accessibility of the ecosystem by building tools that strengthen its independence.
                             </p>
                             <p>
-                                Beyond my academic and professional pursuits, I have actively sought to apply my skills for social good. I volunteered as a mentor for 'Code for All', a non-profit organization dedicated to teaching programming to underprivileged youth. This experience was profoundly rewarding and reinforced my belief in the power of technology to create opportunities and bridge societal gaps. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. My goal is to leverage advanced computational techniques to build more equitable and accessible technologies.
+                                My path towards exploring how programming language abstractions can aid the PyData community began at Quansight. Working with Travis Oliphant, creator of NumPy, we sought to research a new foundation for the array ecosystem in Python. I reached out to Lenore Mullin, based on her 1980s work on the 'Mathematics of Arrays' formalizing APL with the lambda calculus, and we ended up working together to integrate her work into Python. This led to the development of a generic framework, metadsl, for representing and optimizing expressions in Python, but securing funding for this type of experimental technology proved challenging. While at Quansight, I also assisted the Data APIs consortium with analyzing the usage of array API patterns in Python, giving me the opportunity to witness the difficulties in providing users with universal interfaces. After leaving Quansight, I joined a startup Linea that was working to bring database and programming language theory to assist Python data scientists. As one of their first engineers, I engaged with academic researchers as the leader in developing Linea’s abstract analysis engine, which transformed Python code into a functional dataflow graph in order to support program slicing and lineage analysis. After leaving Linea, I re-focused on developing a system for abstract interpretation in Python. I learned about the work on e-graphs from the University of Washington, a technique that comes from equational reasoning. I wrote a Python library exposing the research software to a broader audience and presented it at the E-GRAPHS workshop at PLDI. I also developed an interactive visualizer, now integrated into the project, to make the work more accessible. To deepen my academic collaboration, I applied for and received an NSF fellowship to support pursuing a Ph.D. in computer science.
                             </p>
                              <p>
-                                I believe that the rigorous curriculum, distinguished faculty, and collaborative research opportunities at Stanford will be instrumental in achieving this vision. The university's commitment to interdisciplinary research, exemplified by the Stanford Artificial Intelligence Laboratory (SAIL), aligns perfectly with my interests. I am eager to contribute my skills and enthusiasm to your vibrant academic community and am confident that my background has prepared me for the challenges and rewards of this prestigious program. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. I look forward to the possibility of contributing to the legacy of innovation at Stanford.
+                                My ongoing work with e-graphs in Python gives me a jumping-off point for my overall research goals in pursuing a Ph.D. In egglog, the framework building e-graphs on top of datalog, I am interested in studying the addition of parameterized types and higher-order functions to improve expressivity and the relationship to existing compute engines, such as SQL and differential dataflow. I also want to explore how existing functional abstractions like the Mathematics of Arrays and the RSVDG can be implemented within the e-graph framework to provide a general-purpose compiler framework for numeric computation, AI, and data science. More broadly, I am interested in studying, through the lens of human-computer interaction, how frameworks for type-driven programming can assist in cross-domain and language translation to assist inter-group collaboration between library developers, as well as how concepts from the foundations of mathematics can help give us the language to reason about the semantics of programming languages.
+                            </p>
+                            <p>
+                                More specifically, at the University of Washington, I am interested in working with Zachary Tatlock, Gilbert Bernstein, Dan Grossman, and Luis Ceze on studying the abstract interpretation and compilation of machine learning code in Python. Moreover, I want to connect the academic programming language community closer with the Python ecosystem, a high-impact field that would benefit from a foundational approach to studying abstraction. By enrolling in your graduate program, I could develop longer-term working relationships with other researchers in an environment supportive of experimentation and thus connect abstract research with the needs of existing open-source communities.
                             </p>
                         </div>
                     `;
                     sopPreviewContainer.classList.remove('text-gray-400');
-                    sopPreviewContainer.parentElement.classList.add('overflow-y-auto');
+                    sopPreviewWrapper.classList.add('overflow-y-auto');
                 }, 2500); // Simulate a 2.5-second generation time
             }
 
             nextBtn.addEventListener('click', () => {
                 if (currentStep < totalSteps) {
                     currentStep++;
-                    updateUI();
                     updateUI(); 
                     if (currentStep === totalSteps) {
                         generateSopContent();
@@ -573,19 +656,31 @@
             });
 
             // Handle Accordion for Step 2
-            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            const accordionHeaders = document.querySelectorAll('#accordion-container .accordion-header');
             accordionHeaders.forEach(header => {
                 header.addEventListener('click', () => {
                     const content = header.nextElementSibling;
                     const icon = header.querySelector('.accordion-icon');
                     
                     content.classList.toggle('hidden');
-                    icon.classList.toggle('rotate-180');
+                    if (icon) icon.classList.toggle('rotate-180');
 
                     // Optional: Check the checkbox when opened
                     const checkbox = header.querySelector('input[type="checkbox"]');
                     if (checkbox && !content.classList.contains('hidden')) {
                         checkbox.checked = true;
+                    }
+                });
+            });
+
+            // Handle Professor Interest Section
+            const professorRadios = document.querySelectorAll('input[name="professor"]');
+            const interestedFrom = document.getElementById('interested-from');
+
+            professorRadios.forEach(radio => {
+                radio.addEventListener('change', () => {
+                    if (radio.checked) {
+                        interestedFrom.classList.remove('hidden');
                     }
                 });
             });
