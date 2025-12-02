@@ -259,66 +259,50 @@
                     <div class="mt-6">
                         <label for="professor-select" class="text-md font-medium text-gray-800">Professors of Interest</label>
                         <p class="text-sm text-gray-500 mb-2">Select any professors you are interested in working with (optional).</p>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <label for="prof-ng">
-                                <input id="prof-ng" type="radio" name="professor" value="prof-ng" class="peer hidden">
-                                <div class="p-4 border border-gray-300 rounded-lg cursor-pointer hover:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-2 h-full flex flex-row items-center">
+                        <div class="space-y-4">
+                            <!-- Professor 1 -->
+                            <div class="p-4 border border-gray-300 rounded-lg has-[:checked]:border-blue-600 has-[:checked]:bg-blue-50 has-[:checked]:ring-2">
+                                <label class="flex flex-row items-center cursor-pointer">
+                                    <input type="checkbox" name="professor" value="prof-ng" class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500 mr-4 flex-shrink-0">
                                     <img src="https://placehold.co/64x64/E0E7FF/4F46E5?text=AN" alt="Professor Andrew Ng" class="w-16 h-16 rounded-full object-cover" onerror="this.src='https://placehold.co/64x64/E0E7FF/4F46E5?text=AN'">
                                     <div class="ml-4">
                                         <h4 class="font-semibold text-gray-800">Prof. Andrew Ng</h4>
                                         <p class="text-sm text-gray-600">Machine Learning</p>
                                     </div>
+                                </label>
+                                <div class="prof-interest-container mt-4 hidden">
+                                    <label for="prof-interest-text-ng" class="block mb-2 text-sm font-medium text-gray-700">Why are you interested in their work?</label>
+                                    <textarea id="prof-interest-text-ng" class="w-full p-3 h-24 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Briefly explain your interest in Prof. Ng's work..."></textarea>
                                 </div>
-                            </label>
-                            <label for="prof-fei-fei">
-                                <input id="prof-fei-fei" type="radio" name="professor" value="prof-fei-fei" class="peer hidden">
-                                <div class="p-4 border border-gray-300 rounded-lg cursor-pointer hover:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-2 h-full flex flex-row items-center">
+                            </div>
+                            <!-- Professor 2 -->
+                            <div class="p-4 border border-gray-300 rounded-lg has-[:checked]:border-blue-600 has-[:checked]:bg-blue-50 has-[:checked]:ring-2">
+                                <label class="flex flex-row items-center cursor-pointer">
+                                    <input type="checkbox" name="professor" value="prof-fei-fei" class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500 mr-4 flex-shrink-0">
                                      <img src="https://placehold.co/64x64/E0E7FF/4F46E5?text=FL" alt="Professor Fei-Fei Li" class="w-16 h-16 rounded-full object-cover" onerror="this.src='https://placehold.co/64x64/E0E7FF/4F46E5?text=FL'">
                                     <div class="ml-4">
                                         <h4 class="font-semibold text-gray-800">Prof. Fei-Fei Li</h4>
                                         <p class="text-sm text-gray-600">Computer Vision</p>
                                     </div>
+                                </label>
+                                <div class="prof-interest-container mt-4 hidden">
+                                    <label for="prof-interest-text-fei-fei" class="block mb-2 text-sm font-medium text-gray-700">Why are you interested in their work?</label>
+                                    <textarea id="prof-interest-text-fei-fei" class="w-full p-3 h-24 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Briefly explain your interest in Prof. Li's work..."></textarea>
                                 </div>
-                            </label>
-                            <label for="prof-jurafsky">
-                                <input id="prof-jurafsky" type="radio" name="professor" value="prof-jurafsky" class="peer hidden">
-                                <div class="p-4 border border-gray-300 rounded-lg cursor-pointer hover:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-2 h-full flex flex-row items-center">
+                            </div>
+                            <!-- Professor 3 -->
+                            <div class="p-4 border border-gray-300 rounded-lg has-[:checked]:border-blue-600 has-[:checked]:bg-blue-50 has-[:checked]:ring-2">
+                                <label class="flex flex-row items-center cursor-pointer">
+                                    <input type="checkbox" name="professor" value="prof-jurafsky" class="h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500 mr-4 flex-shrink-0">
                                      <img src="https://placehold.co/64x64/E0E7FF/4F46E5?text=DJ" alt="Professor Dan Jurafsky" class="w-16 h-16 rounded-full object-cover" onerror="this.src='https://placehold.co/64x64/E0E7FF/4F46E5?text=DJ'">
                                     <div class="ml-4">
                                         <h4 class="font-semibold text-gray-800">Prof. Dan Jurafsky</h4>
                                         <p class="text-sm text-gray-600">Natural Language Processing</p>
                                     </div>
-                                </div>
-                            </label>
-                        </div>
-                        <div id="interested-from" class="mt-4 hidden">
-                            <label for="prof-interest-text" class="block mb-2 text-sm font-medium text-gray-700">Why are you interested in their work?</label>
-                            <textarea id="prof-interest-text" class="w-full p-3 h-24 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Briefly explain why you are interested in their work, mentioning specific papers or projects if possible."></textarea>
-                        </div>
-                         <!-- Professor Preference Section -->
-                        <div class="border border-gray-200 rounded-lg mt-4">
-                            <button type="button" class="accordion-header flex justify-between items-center w-full p-4 text-left hover:bg-gray-50 focus:outline-none">
-                                <span class="flex items-center">
-                                    <input id="cb-prof" type="checkbox" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" onclick="event.stopPropagation()">
-                                    <label for="cb-prof" class="ml-3 text-md font-medium text-gray-800 cursor-pointer" onclick="event.stopPropagation()">Mention a Professor of Interest</label>
-                                </span>
-                                <svg class="accordion-icon w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                            </button>
-                            <div class="accordion-content hidden p-4 pt-0">
-                                <p class="text-sm text-gray-500 mb-4">Mentioning a professor and your interest in their work can strengthen your application.</p>
-                                <div class="space-y-4">
-                                    <div>
-                                        <label for="prof-name" class="block mb-2 text-sm font-medium text-gray-700">Professor's Name</label>
-                                        <input type="text" id="prof-name" class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g., Prof. Andrew Ng">
-                                    </div>
-                                    <div>
-                                        <label for="prof-title" class="block mb-2 text-sm font-medium text-gray-700">Professor's Title / Research Area</label>
-                                        <input type="text" id="prof-title" class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g., Expert in Machine Learning">
-                                    </div>
-                                    <div>
-                                        <label for="prof-interest-accordion" class="block mb-2 text-sm font-medium text-gray-700">Why are you interested in their work?</label>
-                                        <textarea id="prof-interest-accordion" class="w-full p-3 h-24 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Briefly explain why you are interested in their work, mentioning specific papers or projects if possible."></textarea>
-                                    </div>
+                                </label>
+                                <div class="prof-interest-container mt-4 hidden">
+                                    <label for="prof-interest-text-jurafsky" class="block mb-2 text-sm font-medium text-gray-700">Why are you interested in their work?</label>
+                                    <textarea id="prof-interest-text-jurafsky" class="w-full p-3 h-24 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Briefly explain your interest in Prof. Jurafsky's work..."></textarea>
                                 </div>
                             </div>
                         </div>
@@ -364,9 +348,9 @@
                         <input type="radio" name="model" value="custom" class="peer hidden">
                         <div class="p-6 border border-gray-300 rounded-lg cursor-pointer hover:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-2 h-full">
                             <h4 class="text-lg font-semibold text-gray-800">Custom</h4>
-                            <p class="text-sm text-gray-600 mt-1">Define your own style. Provide keywords for the AI.</p>
-                            <div class="mt-4 border-t border-gray-200 pt-3">
-                                <p class="text-xs text-gray-500 italic">e.g., "Enthusiastic, slightly informal, and optimistic."</p>
+                            <p class="text-sm text-gray-600 mt-1">Define your own style by providing keywords for the AI.</p>
+                            <div id="custom-style-input-container" class="mt-4 border-t border-gray-200 pt-3 hidden">
+                                <textarea id="custom-style-input" class="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm" placeholder="e.g., Enthusiastic, slightly informal, optimistic..."></textarea>
                             </div>
                         </div>
                     </label>
@@ -380,28 +364,21 @@
                     <label>
                         <input type="radio" name="design" value="minimal" class="peer hidden" checked>
                         <div class="border border-gray-300 rounded-lg cursor-pointer overflow-hidden peer-checked:ring-2 peer-checked:ring-offset-2 peer-checked:ring-blue-600">
-                            <img src="https://placehold.co/600x400/F3F4F6/9CA3AF?text=Minimalist+Design" alt="Classic Minimalist Design" class="w-full h-64 object-cover bg-gray-200" onerror="this.src='https://placehold.co/600x400/F3F4F6/9CA3AF?text=Minimalist+Design'">
+                            <img src="./assets/images/classic-minimalist.png" alt="Classic Minimalist Design" class="w-full h-64 object-top bg-gray-200" onerror="this.src='https://placehold.co/600x400/F3F4F6/9CA3AF?text=Minimalist+Design'">
                             <p class="text-center p-3 text-sm font-medium text-gray-700">Classic Minimalist</p>
                         </div>
                     </label>
                     <label>
                         <input type="radio" name="design" value="serif" class="peer hidden">
                         <div class="border border-gray-300 rounded-lg cursor-pointer overflow-hidden peer-checked:ring-2 peer-checked:ring-offset-2 peer-checked:ring-blue-600">
-                            <img src="https://placehold.co/600x400/F3F4F6/9CA3AF?text=Serif+Design" alt="Modern Serif Design" class="w-full h-64 object-cover bg-gray-200" onerror="this.src='https://placehold.co/600x400/F3F4F6/9CA3AF?text=Serif+Design'">
+                            <img src="./assets/images/modern-serif.png" alt="Modern Serif Design" class="w-full h-64 object-cover bg-gray-200" onerror="this.src='https://placehold.co/600x400/F3F4F6/9CA3AF?text=Serif+Design'">
                             <p class="text-center p-3 text-sm font-medium text-gray-700">Modern Serif</p>
-                        </div>
-                    </label>
-                    <label>
-                        <input type="radio" name="design" value="modern" class="peer hidden">
-                        <div class="border border-gray-300 rounded-lg cursor-pointer overflow-hidden peer-checked:ring-2 peer-checked:ring-offset-2 peer-checked:ring-blue-600">
-                            <img src="https://placehold.co/600x400/F3F4F6/9CA3AF?text=Modern+Design" alt="Modern Design" class="w-full h-64 object-cover bg-gray-200" onerror="this.src='https://placehold.co/600x400/F3F4F6/9CA3AF?text=Modern+Design'">
-                            <p class="text-center p-3 text-sm font-medium text-gray-700">Modern</p>
                         </div>
                     </label>
                     <label>
                         <input type="radio" name="design" value="bold" class="peer hidden">
                         <div class="border border-gray-300 rounded-lg cursor-pointer overflow-hidden peer-checked:ring-2 peer-checked:ring-offset-2 peer-checked:ring-blue-600">
-                            <img src="https://placehold.co/600x400/F3F4F6/9CA3AF?text=Bold+Header+Design" alt="Bold Header Design" class="w-full h-64 object-cover bg-gray-200" onerror="this.src='https://placehold.co/600x400/F3F4F6/9CA3AF?text=Bold+Header+Design'">
+                            <img src="./assets/images/bold-header.png" alt="Bold Header Design" class="w-full h-64 object-cover bg-gray-200" onerror="this.src='https://placehold.co/600x400/F3F4F6/9CA3AF?text=Bold+Header+Design'">
                             <p class="text-center p-3 text-sm font-medium text-gray-700">Bold Header</p>
                         </div>
                     </label>
@@ -412,57 +389,17 @@
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">Step 5: Preview Your SOP</h3>
                 <p class="text-gray-500 mb-6">Here is a preview of your generated Statement of Purpose. You can download the full, high-quality PDF.</p>
 
-                <!-- Live Edit Controls -->
-                <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
-                    <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
-                        <p class="text-sm text-gray-600 font-medium">Live Controls</p>
-                        <div class="flex items-center space-x-4">
-                            <button type="button" class="edit-step-btn text-xs font-medium text-blue-600 hover:underline" data-step="1">Edit Details</button>
-                            <button type="button" class="edit-step-btn text-xs font-medium text-blue-600 hover:underline" data-step="2">Edit Content</button>
-                        </div>
-                    </div>
-
-                    <!-- Live Design Selector -->
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Design</label>
-                        <div id="live-design-controls" class="grid grid-cols-2 md:grid-cols-4 gap-3">
-                            <label>
-                                <input type="radio" name="live-design" value="minimal" class="peer hidden" checked>
-                                <div class="text-center p-2 border border-gray-300 rounded-lg cursor-pointer text-xs peer-checked:bg-blue-600 peer-checked:text-white peer-checked:border-blue-600">Minimalist</div>
-                            </label>
-                            <label>
-                                <input type="radio" name="live-design" value="serif" class="peer hidden">
-                                <div class="text-center p-2 border border-gray-300 rounded-lg cursor-pointer text-xs peer-checked:bg-blue-600 peer-checked:text-white peer-checked:border-blue-600">Serif</div>
-                            </label>
-                            <label>
-                                <input type="radio" name="live-design" value="modern" class="peer hidden">
-                                <div class="text-center p-2 border border-gray-300 rounded-lg cursor-pointer text-xs peer-checked:bg-blue-600 peer-checked:text-white peer-checked:border-blue-600">Modern</div>
-                            </label>
-                            <label>
-                                <input type="radio" name="live-design" value="bold" class="peer hidden">
-                                <div class="text-center p-2 border border-gray-300 rounded-lg cursor-pointer text-xs peer-checked:bg-blue-600 peer-checked:text-white peer-checked:border-blue-600">Bold</div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Live Style Selector -->
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Writing Style</label>
-                        <select id="live-style-controls" class="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
-                            <option value="formal">Formal & Academic</option>
-                            <option value="confident" selected>Confident & Persuasive</option>
-                            <option value="creative">Creative & Personal</option>
-                        </select>
-                    </div>
-
-                    <!-- Save Edits Button -->
-                    <div class="mt-4 pt-4 border-t border-gray-200">
-                         <button type="button" id="save-edits-btn" class="w-full py-2 px-4 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 text-sm">Save & Apply Edits</button>
-                         <p class="text-xs text-gray-500 mt-2 text-center">Click this after editing the text below to keep your changes when switching designs.</p>
-                    </div>
-                </div>
-
                 <div id="sop-preview-container-wrapper" class="relative border border-gray-300 rounded-lg p-6 overflow-hidden">
+                    <button type="button" id="edit-preview-btn" class="absolute top-4 right-14 z-20 bg-blue-600 text-white rounded-full p-2 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 hidden">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L16.732 3.732z"></path>
+                        </svg>
+                    </button>
+                    <button type="button" id="save-preview-btn" class="absolute top-4 right-4 z-20 bg-green-600 text-white rounded-full p-2 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 hidden">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </button>
                     <div id="preview-overlay" class="absolute inset-0 bg-white/50 backdrop-blur-sm z-10 flex items-center justify-center">
                         <div id="preview-ready-state" class="text-center p-6 bg-white/80 rounded-lg shadow-lg">
                             <svg class="w-12 h-12 text-blue-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
@@ -478,7 +415,7 @@
                         </div>
                     </div>
                     
-                    <div id="sop-preview-container" class="text-gray-400 outline-none" contenteditable="true">
+                    <div id="sop-preview-container" class="text-gray-400 outline-none focus:ring-2 focus:ring-blue-500 rounded-md" contenteditable="false">
                         <h4 class="text-xl font-bold mb-4">Statement of Purpose: [Your Name]</h4>
                         <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi...</p>
                         <p class="mb-4">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
@@ -536,8 +473,8 @@
             };
 
             document.querySelectorAll('input[name="professor"]').forEach(radio => {
-                const img = radio.parentElement.querySelector('img');
-                const profId = radio.id;
+                const img = radio.closest('label').querySelector('img');
+                const profId = radio.value;
                 if (img && professorImages[profId]) {
                     img.src = professorImages[profId];
                 }
@@ -545,9 +482,9 @@
 
             // Use placeholder images for design templates
             const designImages = {
-                "minimal": "https://placehold.co/600x400/F3F4F6/9CA3AF?text=Minimalist+Design",
-                "serif": "https://placehold.co/600x400/F3F4F6/9CA3AF?text=Serif+Design",
-                "bold": "https://placehold.co/600x400/F3F4F6/9CA3AF?text=Bold+Header+Design",
+                "minimal": "./assets/images/classic-minimalist.png",
+                "serif": "./assets/images/modern-serif.png",
+                "bold": "./assets/images/bold-header.png",
                 "modern": "https://placehold.co/600x400/F3F4F6/9CA3AF?text=Modern+Design"
             };
 
@@ -628,14 +565,18 @@
                 // Pass false to not show the loading overlay on live edits
                 const showLoading = arguments.length > 0 && arguments[0] === false ? false : true;
                 const sopPreviewContainer = document.getElementById('sop-preview-container');
-                const sopPreviewWrapper = document.getElementById('sop-preview-container-wrapper');
-                const selectedDesign = document.querySelector('input[name="live-design"]:checked').value;
-                const selectedStyle = document.getElementById('live-style-controls').value;
+                const sopPreviewWrapper = document.getElementById('sop-preview-container-wrapper');                
+                const selectedDesign = document.querySelector('input[name="design"]:checked').value;
+                const selectedStyle = document.querySelector('input[name="model"]:checked').value;
+                const savePreviewBtn = document.getElementById('save-preview-btn');
+                const editPreviewBtn = document.getElementById('edit-preview-btn');
 
                 // Show loading state
                 if (showLoading) {
-                    const previewOverlay = document.getElementById('preview-overlay');
+                    const previewOverlay = document.getElementById('preview-overlay');                    
                     previewOverlay.classList.remove('hidden');
+                    savePreviewBtn.classList.add('hidden');
+                    editPreviewBtn.classList.add('hidden');
                     previewReadyState.classList.add('hidden');
                     previewLoadingState.classList.remove('hidden');
                     sopPreviewWrapper.classList.remove('overflow-y-auto');
@@ -647,6 +588,8 @@
                     // Hide the overlay
                     if (showLoading) {
                         document.getElementById('preview-overlay').classList.add('hidden');
+                        savePreviewBtn.classList.add('hidden');
+                        editPreviewBtn.classList.remove('hidden');
                     }
                     
                     let content = '';
@@ -719,14 +662,6 @@
                 if (currentStep < totalSteps) {
                     currentStep++;
                     userEditedContent = null; // Reset edits when moving between main steps
-                    if (currentStep === totalSteps) {
-                        // Sync step 4 selections to live controls in step 5
-                        const designSelection = document.querySelector('input[name="design"]:checked').value;
-                        document.querySelector(`input[name="live-design"][value="${designSelection}"]`).checked = true;
-
-                        const styleSelection = document.querySelector('input[name="model"]:checked').value;
-                        document.getElementById('live-style-controls').value = styleSelection;
-                    }
                     updateUI(); 
                     if (currentStep === totalSteps) {
                         generateSopContent();
@@ -749,34 +684,26 @@
                 document.getElementById('subscription-modal').classList.add('hidden');
             });
 
-            // Handle Edit buttons on Preview page
-            document.querySelectorAll('.edit-step-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const step = parseInt(btn.dataset.step);
-                    if (step > 0 && step < totalSteps) {
-                        currentStep = step;
-                        updateUI();
-                        // Hide the preview overlay if we jump back from the preview step
-                        document.getElementById('preview-overlay').classList.add('hidden');
-                    }
-                });
-            });
-
-            // Handle Live Edit controls on Preview page
-            document.querySelectorAll('#live-design-controls input').forEach(radio => {
-                radio.addEventListener('change', () => generateSopContent(false));
-            });
-            document.getElementById('live-style-controls').addEventListener('change', () => {
-                generateSopContent(false);
-            });
-            document.getElementById('save-edits-btn').addEventListener('click', () => {
+            // Handle Edit and Save Preview Buttons
+            document.getElementById('edit-preview-btn').addEventListener('click', () => {
                 const sopPreviewContainer = document.getElementById('sop-preview-container');
-                // Find the core text part of the preview to save
-                const contentWrapper = sopPreviewContainer.querySelector('.sop-body-content');
-                if (contentWrapper) userEditedContent = contentWrapper.innerHTML;
-                generateSopContent(false); // Re-apply the current design with the saved content
+                sopPreviewContainer.contentEditable = 'true';
+                sopPreviewContainer.focus();
+                document.getElementById('save-preview-btn').classList.remove('hidden');
+                document.getElementById('edit-preview-btn').classList.add('hidden');
             });
 
+            document.getElementById('save-preview-btn').addEventListener('click', () => {
+                const sopPreviewContainer = document.getElementById('sop-preview-container');
+                sopPreviewContainer.contentEditable = 'false';
+
+                const contentWrapper = sopPreviewContainer.querySelector('.sop-body-content');
+                if (contentWrapper) {
+                    userEditedContent = contentWrapper.innerHTML;
+                }
+                document.getElementById('save-preview-btn').classList.add('hidden');
+                document.getElementById('edit-preview-btn').classList.remove('hidden');
+            });
 
             // Handle CV/Resume option toggle
             const cvOptions = document.querySelectorAll('input[name="cv-option"]');
@@ -815,15 +742,29 @@
 
             // Handle Professor Interest Section
             const professorRadios = document.querySelectorAll('input[name="professor"]');
-            const interestedFrom = document.getElementById('interested-from');
-
+            
             professorRadios.forEach(radio => {
                 radio.addEventListener('change', () => {
-                    if (radio.checked) {
-                        interestedFrom.classList.remove('hidden');
+                    const container = radio.closest('.p-4.border');
+                    const interestDiv = container.querySelector('.prof-interest-container');
+                    interestDiv.classList.toggle('hidden', !radio.checked);
+                });
+            });
+
+            // Handle Custom Style Input
+            const styleRadios = document.querySelectorAll('input[name="model"]');
+            const customStyleContainer = document.getElementById('custom-style-input-container');
+
+            styleRadios.forEach(radio => {
+                radio.addEventListener('change', () => {
+                    if (radio.value === 'custom' && radio.checked) {
+                        customStyleContainer.classList.remove('hidden');
+                    } else {
+                        customStyleContainer.classList.add('hidden');
                     }
                 });
             });
+
 
             // University Search Dropdown
             const universitySearch = document.getElementById('university-search');
